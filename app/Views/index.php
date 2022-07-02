@@ -123,22 +123,12 @@
         <div class="container">
             <div class="footer-container">
                 <section class="footer__col">
-                    <p class="footer__col--title">
-                        Our Contacts
-                    </p>
+                    <p class="footer__col--title">Our Contacts</p>
 
-                    <p class="footer__col--contact">
-                        Head Office: Railways Godown, Nairobi
-                    </p>
-                    <p class="footer__col--contact">
-                        Email: info@easycoach.co.ke
-                    </p>
-                    <p class="footer__col--contact">
-                        Phone: 0738200301
-                    </p>
-                    <p class="footer__col--contact">
-                        Website: easycoach.co.ke
-                    </p>
+                    <p class="footer__col--contact">Head Office: Railways Godown, Nairobi</p>
+                    <p class="footer__col--contact">Email: info@easycoach.co.ke</p>
+                    <p class="footer__col--contact">Phone: 0738200301</p>
+                    <p class="footer__col--contact">Website: easycoach.co.ke</p>
 
                 </section>
 
@@ -159,7 +149,7 @@
                     </p>
 
                     <ul class="footer__col--list">
-                        <li class="footer__col--item"><a href="login.php" class="footer__col--link">Admin Login</a></li>
+                        <li class="footer__col--item"><a href="<?= base_url('/login') ?>" class="footer__col--link">Admin Login</a></li>
                         <li class="footer__col--item"><a href="services.html" class="footer__col--link">Services</a></li>
                         <li class="footer__col--item"><a href="about-us.html" class="footer__col--link">About Us</a></li>
                         <li class="footer__col--item"><a href="routes.html" class="footer__col--link">Routes</a></li>

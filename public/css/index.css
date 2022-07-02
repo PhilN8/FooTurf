@@ -184,7 +184,7 @@ body {
 .book__form--input:focus ~ .book__form--label,
 .book__form--input:not(:placeholder-shown).book__form--input:not(:focus) ~ .book__form--label {
     top: -12px;
-    /*background-color:;*/
+    background-color: white;
     font-size: 0.9rem;
 }
 

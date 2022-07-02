@@ -51,7 +51,7 @@
 
 .login__form--btn:hover {
     background-color: #0c4f09;
-    /*color: white;*/
+    border-color: #0c4f09;
 }
 
 .login__form--box {
