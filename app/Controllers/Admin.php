@@ -8,6 +8,7 @@ class Admin extends Controller
 {
     public function index()
     {
-        return view('admin');
+        session();
+        return view('admin', $_SESSION);
     }
 }
