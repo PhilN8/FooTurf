@@ -16,7 +16,7 @@
     <header class="header">
         <div class="brand">
             <h1 class="brand__title">
-                <a href="#" class="brand__title--link">FooTurf</a>
+                <a href="<?= base_url('/') ?>" class="brand__title--link">FooTurf</a>
             </h1>
         </div>
 
@@ -26,7 +26,7 @@
                 <li class="nav__item"><a href="about-us.html" class="nav__link">About Us</a></li>
                 <li class="nav__item"><a href="routes.html" class="nav__link">Routes</a></li>
                 <li class="nav__item"><a href="services.html" class="nav__link">Services</a></li>
-                <li class="nav__item"><a href="book_online.php" class="nav__link nav__link--btn">Book Online</a></li>
+                <li class="nav__item"><a href="<?= base_url('/booking') ?>" class="nav__link nav__link--btn">Book Online</a></li>
             </ul>
         </nav>
 
@@ -82,7 +82,7 @@
         <section class="inquiry">
             <div class="container inquiry-container">
                 <div class="inquiry__col">
-<!--                    <img src="img/banner-inquiry.jpg" alt="Inquiry banner" class="inquiry__img">-->
+                    <!--                    <img src="img/banner-inquiry.jpg" alt="Inquiry banner" class="inquiry__img">-->
                     <p class="inquiry__text--title">Visit Us</p>
                     <p class="inquiry__text--normal">
                         Railways<br />Nairobi, Kenya
@@ -108,8 +108,7 @@
                         <label for="email" class="book__form--label">Email</label>
                     </div>
                     <div class="book__form--box">
-                            <textarea name="comment" id="comment" cols="30" rows="7" class="book__form--input"
-                                      placeholder=" "></textarea>
+                        <textarea name="comment" id="comment" cols="30" rows="7" class="book__form--input" placeholder=" "></textarea>
                         <label for="comment" class="book__form--label">Comment</label>
                     </div>
                     <button type="submit" class="inquiry__btn" onclick="sendComment()">Submit</button>
@@ -161,12 +160,12 @@
         </div>
 
         <p class="footer__bottom--text">
-            © Copyright - FooTurf Ltd <?= date('Y')?>.
+            © Copyright - FooTurf Ltd <?= date('Y') ?>.
         </p>
     </footer>
 
-    <script src="<?= base_url('scripts/jquery.min.js')?>"></script>
-    <script src="<?= base_url('scripts/toastr.js')?>"></script>
+    <script src="<?= base_url('scripts/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('scripts/toastr.js') ?>"></script>
     <script src="<?= base_url('scripts/nav.js') ?>"></script>
     <script src="<?= base_url('scripts/index.js') ?>"></script>
 </body>

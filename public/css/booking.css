@@ -1,0 +1,179 @@
+:root {
+  --btn-primary: #5cb85c;
+  --hover-primary: #197019;
+  --btn-secondary: #b41b1b;
+  --hover-secondary: #7a0d0d;
+}
+
+.float-right {
+  float: right;
+}
+
+.book {
+  padding-block: 3rem;
+}
+
+.book__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.form__container {
+  margin: 1.25rem 0 0.75rem;
+}
+
+.form__box {
+  margin-bottom: 0.9375rem;
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+.form__label {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  color: var(--nav-black, black);
+  text-transform: capitalize;
+  font-size: 1rem;
+  transition: top 0.3s;
+  padding: 0 5px;
+  cursor: text;
+}
+
+.form__input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 0.625rem;
+  outline: none;
+  padding: 0.625rem;
+  padding-left: 1rem;
+  font-size: 1.1rem;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -12px;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.book__btn,
+.book__link {
+  border: 1px solid var(--nav-primary);
+  outline: none;
+  border-radius: 4px;
+  padding: 7px 15px;
+  color: var(--nav-light);
+  background-color: var(--nav-primary);
+  transition: all 0.3s ease;
+}
+
+.book__btn:hover,
+.book__link:hover {
+  background-color: var(--nav-light);
+  color: var(--nav-primary);
+}
+
+@media all and (min-width: 600px) {
+  .form__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .form__box {
+    width: calc(100% / 2 - 1.25rem);
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding-block: 0;
+  border: 1px solid #888;
+  width: min(80%, 500px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animateModal;
+  animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animateModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal__header {
+  padding: 10px 16px;
+  background-color: #5cb85c;
+  color: white;
+  font-size: 1.2rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Modal Body */
+.modal__body {
+  padding: 2px 16px;
+  font-size: 1rem;
+}
+
+.modal__body--span {
+  font-weight: 700;
+}
+
+.modal__btn {
+  outline: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  color: white;
+  background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 0 0 0.5rem 1rem;
+  display: inline-block;
+}
+
+.modal__btn.float-right {
+  float: right;
+  margin: 0 1rem 0.5rem 0;
+  background-color: var(--btn-secondary);
+  border-color: var(--btn-secondary);
+}
+
+.modal__btn.float-right:hover {
+  background-color: var(--hover-secondary);
+  border-color: var(--hover-secondary);
+  color: white;
+}
+.modal__body--title {
+  font-size: 700;
+  font-size: 2rem;
+}
+
+.modal__body--text {
+  margin-bottom: 0.7rem;
+}

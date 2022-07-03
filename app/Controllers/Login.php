@@ -9,7 +9,7 @@ class Login extends BaseController
 {
     public function index()
     {
-        return view('login');
+        return view('frontend/login');
     }
 
     public function login()
@@ -65,6 +65,6 @@ class Login extends BaseController
         }
         session_destroy();
         $data['logout'] = 1;
-        echo view('/login', $data);
+        echo view('frontend/login', $data);
     }
 }

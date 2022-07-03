@@ -8,7 +8,9 @@ class Admin extends Controller
 {
     public function index()
     {
-        session();
-        return view('admin', $_SESSION);
+        if (isset($_SESSION['login_id']))
+            return view('frontend/admin', $_SESSION);
+        else
+            return view('frontend/login');
     }
 }
