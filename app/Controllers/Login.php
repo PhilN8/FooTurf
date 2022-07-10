@@ -58,11 +58,11 @@ class Login extends BaseController
     public function logout()
     {
         session();
-
         if (isset($_SESSION['login_id'])) {
             $user = new AdminLogin();
             $user->logout($_SESSION['login_id']);
         }
+
         session_destroy();
         $data['logout'] = 1;
         echo view('frontend/login', $data);

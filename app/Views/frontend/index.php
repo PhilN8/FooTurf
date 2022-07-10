@@ -22,11 +22,10 @@
 
         <nav class="navbar">
             <ul class="nav__list">
+                <li class="nav__item"><a href="<?= base_url('/') ?>" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="<?= base_url('/stats') ?>" class="nav__link">Top Teams</a></li>
                 <li class="nav__item"><a href="<?= base_url('/login') ?>" class="nav__link">Login</a></li>
-                <li class="nav__item"><a href="about-us.html" class="nav__link">About Us</a></li>
-                <li class="nav__item"><a href="routes.html" class="nav__link">Routes</a></li>
-                <li class="nav__item"><a href="services.html" class="nav__link">Services</a></li>
-                <li class="nav__item"><a href="<?= base_url('/booking') ?>" class="nav__link nav__link--btn">Book Online</a></li>
+                <li class="nav__item"><a href="<?= base_url('/booking') ?>" class="nav__link nav__link--btn">Book A Game</a></li>
             </ul>
         </nav>
 

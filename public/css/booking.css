@@ -77,6 +77,11 @@
   color: var(--nav-primary);
 }
 
+.book__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 @media all and (min-width: 600px) {
   .form__container {
     display: flex;
@@ -157,6 +162,13 @@
   display: inline-block;
 }
 
+.modal__btn:focus,
+.modal__btn:hover {
+  background-color: var(--hover-primary);
+  border-color: var(--hover-primary);
+  color: white;
+}
+
 .modal__btn.float-right {
   float: right;
   margin: 0 1rem 0.5rem 0;
@@ -164,7 +176,8 @@
   border-color: var(--btn-secondary);
 }
 
-.modal__btn.float-right:hover {
+.modal__btn.float-right:hover,
+.modal__btn.float-right:focus {
   background-color: var(--hover-secondary);
   border-color: var(--hover-secondary);
   color: white;

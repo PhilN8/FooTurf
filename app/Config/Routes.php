@@ -41,6 +41,10 @@ $routes->post('/login', 'Login::login');
 $routes->get('/logout', 'Login::logout');
 $routes->get('/admin', 'Admin::index');
 $routes->get('/booking', 'Booking::index');
+$routes->post('/booking', 'Booking::book');
+$routes->get('/redirect', 'Booking::redirect');
+$routes->post('/redirect', 'Booking::game');
+$routes->get('/stats', 'Stats::index');
 
 /*
  * --------------------------------------------------------------------

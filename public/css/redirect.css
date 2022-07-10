@@ -1,0 +1,80 @@
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.intro {
+  margin-block: 3rem;
+}
+
+.intro__text {
+  font-size: 1.1rem;
+}
+
+.intro__links--btn {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 7px 15px;
+  background-color: var(--nav-primary);
+  color: var(--nav-light);
+  border-radius: 4px;
+
+  margin-top: 0.3rem;
+
+  border: 1px solid var(--nav-primary);
+  transition: all 0.3s ease-out;
+}
+
+.intro__links--btn:hover {
+  background-color: var(--nav-light);
+  color: var(--nav-primary);
+}
+
+.intro__links--btn a {
+  transition: all 0.3s ease-out;
+  color: inherit;
+  text-decoration: none;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.intro__links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+
+  max-width: 300px;
+}
+
+.info__table {
+  width: min(100%, 600px);
+  margin-inline: auto;
+  border-collapse: collapse;
+
+  display: none;
+}
+
+.info__table tr {
+  padding-block: 0.5rem;
+  text-align: center;
+}
+
+.info__table thead th {
+  padding-block: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.info__table thead {
+  color: white;
+  background-color: black;
+}
+
+.info__table tbody td {
+  border: 1px solid black;
+}
+
+.info__table tbody td:not(.have-id) {
+  font-weight: 700;
+}

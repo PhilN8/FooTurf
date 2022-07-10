@@ -217,5 +217,14 @@ aside:hover {
 
 /* The Rest */
 .main section {
+  padding-inline: 2rem;
+}
+
+.container {
+  width: min(85%, 1000px);
   margin-inline: auto;
+}
+
+section.admin-section:not(.intro) {
+  display: none;
 }
