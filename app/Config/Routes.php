@@ -40,11 +40,14 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::login');
 $routes->get('/logout', 'Login::logout');
 $routes->get('/admin', 'Admin::index');
+$routes->post('/admin/editTeam', 'Admin::editTeam');
+$routes->post('/admin/addScores', 'Admin::addScores');
 $routes->get('/booking', 'Booking::index');
 $routes->post('/booking', 'Booking::book');
 $routes->get('/redirect', 'Booking::redirect');
 $routes->post('/redirect', 'Booking::game');
 $routes->get('/stats', 'Stats::index');
+$routes->get('/team/(:num)', 'Stats::info/$1');
 
 /*
  * --------------------------------------------------------------------

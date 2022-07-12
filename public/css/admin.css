@@ -12,12 +12,34 @@
   box-sizing: border-box;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #dfe9f5;
-
+  background-color: white;
   display: flex;
   min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+select,
+input {
+  font: inherit;
 }
 
 aside {
@@ -43,6 +65,7 @@ aside a {
 
   text-decoration: none;
   background-color: var(--nav-light);
+  /* background-color: white; */
   color: var(--nav-primary);
   padding: 10px;
 }
@@ -225,6 +248,161 @@ aside:hover {
   margin-inline: auto;
 }
 
-section.admin-section:not(.intro) {
+section.admin-section:not(.teams) {
   display: none;
+}
+
+.admin__table {
+  width: min(100%, 750px);
+  margin: 2em auto 0;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* .admin__table {
+  width: 100%;
+    margin-right: auto;
+    margin-top: 0;
+} */
+
+.admin__table thead tr {
+  font-size: 1.1rem;
+}
+
+.admin__table th {
+  border-right: 1px solid white;
+  text-align: center;
+  background-color: var(--nav-black, #1b1b1b);
+  color: var(--nav-white, #f0e6e6);
+  padding-block: 0.2rem;
+}
+
+.admin__table td {
+  border-right: 1px solid #222;
+  text-align: center;
+  padding-block: 0.2rem;
+}
+
+.admin__table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.admin__table tr:hover {
+  background-color: #ddd;
+}
+
+.admin__table tbody {
+  display: block;
+  max-height: 200px;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.admin__table,
+.admin__table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.admin__btn--edit {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  color: white;
+  background-color: dodgerblue;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+
+.admin__btn--edit:hover,
+.admin__btn--edit:focus {
+  background-color: #1967b6;
+}
+
+/* Messages */
+
+.admin__msg {
+  margin: 1.2rem auto;
+  font-size: 1.1rem;
+}
+
+/* Form */
+.form__container {
+  margin: 1.25rem 0 0.75rem;
+  width: min(100%, 400px);
+}
+
+.form__box {
+  margin-bottom: 1.2rem;
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+.form__label {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  color: var(--nav-black, black);
+  text-transform: capitalize;
+  font-size: 1rem;
+  transition: top 0.3s;
+  padding: 0 5px;
+  cursor: text;
+}
+
+.form__input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 0.625rem;
+  outline: none;
+  padding: 0.625rem;
+  padding-left: 1rem;
+  font-size: 1.1rem;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -12px;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.form__btn--group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__btn {
+  border: 1px solid var(--nav-primary);
+  outline: none;
+  padding: 4px 8px;
+  color: white;
+  transition: all 0.3s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.form__btn--submit {
+  background-color: var(--nav-primary);
+}
+
+.form__btn--submit:hover,
+.form__btn--submit:focus {
+  background-color: #135511;
+}
+
+.form__btn--cancel {
+  background-color: #b41b1b;
+  border-color: #b41b1b;
+}
+
+.form__btn--cancel:hover,
+.form__btn--cancel:focus {
+  border-color: #701010;
+  background-color: #701010;
 }

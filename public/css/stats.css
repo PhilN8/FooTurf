@@ -1,0 +1,9 @@
+.hero,
+.match {
+  padding-block: 3rem;
+}
+
+.match {
+  background-color: var(--nav-primary);
+  color: var(--nav-light);
+}

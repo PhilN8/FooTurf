@@ -8,8 +8,8 @@
     <title>Welcome | FooTurf</title>
 
     <link rel="stylesheet" href="<?= base_url('css/common.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/index.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/toastr.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/stats.css') ?>">
 </head>
 
 <body>
@@ -34,8 +34,61 @@
             <span></span>
             <span></span>
         </div>
-
     </header>
+
+    <main class="main">
+        <!-- <div class="container"> -->
+        <section class="hero animate-opacity" id="hero">
+            <div class="container">
+                <h2 class="hero__title">Top Teams</h2>
+                <?php foreach ($teams as $team) { ?>
+                    <p class="hero__text"><?= $team['team_name'] ?></p>
+                <?php } ?>
+            </div>
+        </section>
+
+        <style>
+            .match-container {
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            .match-row {
+                padding: 25px 30px;
+                background-color: var(--nav-light);
+                color: var(--nav-primary);
+            }
+        </style>
+
+        <section class="match animate-opacity" id="match">
+            <div class="container">
+                <h2 class="match__title">Today's Matches</h2>
+                <div class="match-container">
+                    <?php foreach ($games as $game) { ?>
+                        <div class="match-row">
+                            <p class="match-title">Match:
+                                <a href="<?= base_url('team/' . $game['team1_id']) ?>"><?= $game['team1_id'] ?><a>
+                                        vs <a href="<?= base_url('team/' . $game['team2_id']) ?>"><?= $game['team2_id'] ?><a>
+                            </p>
+                            <p class="match-time">Time: <?= substr($game['game_start'], 0, 5) . " - " . substr($game['game_end'], 0, 5) ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+                <?php
+                echo "<pre>";
+                print_r($games);
+                echo "</pre>";
+                ?>
+            </div>
+
+        </section>
+        <!-- </div> -->
+    </main>
+
+    <script src="<?= base_url('scripts/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('scripts/toastr.js') ?>"></script>
+    <script src="<?= base_url('scripts/nav.js') ?>"></script>
+    <script src="<?= base_url('scripts/stats.js') ?>"></script>
 </body>
 
 </html>
