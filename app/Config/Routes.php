@@ -47,7 +47,7 @@ $routes->post('/booking', 'Booking::book');
 $routes->get('/redirect', 'Booking::redirect');
 $routes->post('/redirect', 'Booking::game');
 $routes->get('/stats', 'Stats::index');
-$routes->get('/team/(:num)', 'Stats::info/$1');
+$routes->get('/team/(:any)', 'Stats::info/$1');
 
 /*
  * --------------------------------------------------------------------

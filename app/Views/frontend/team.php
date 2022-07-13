@@ -39,22 +39,66 @@
     <main class="main">
         <div class="container">
             <section class="hero">
-                <h1 class="stats__title">Team Details: <?= $team['team_name'] ?? "Team" ?></h1>
-                <div class="hero__details">
-                    <p class="hero__text">Captain Name: <?= $team['captain_name'] ?? "N/A" ?></p>
-                    <p class="hero__text">Contact Info: <?= $team['contact_info'] ?? "N/A" ?></p>
-                    <p class="hero__text">Date Formed: <?= substr($team['created_at'], 0, 10) ?></p>
-                </div>
+                <h2 class="team__title">Team Details: <?= $team['team_name'] ?? "Team" ?></h1>
+                    <div class="hero__details">
+                        <p class="hero__text">Captain Name: <span><?= $team['captain_name'] ?? "N/A" ?></span></p>
+                        <p class="hero__text">Contact Info: <span><?= $team['contact_info'] ?? "N/A" ?></span></p>
+                        <p class="hero__text">Date Formed: <span><?= substr($team['created_at'], 0, 10) ?></span></p>
+                    </div>
             </section>
 
             <section class="stats">
-                <h2 class="stats__title">Last 5 Matches</h2>
-                <table class="stats__table">
-                    <?php
-                    echo "<pre>";
-                    print_r($matches);
-                    echo "</pre>";
-                    ?></table>
+                <h2 class="team__title">Last 5 Matches</h2>
+                <?php if (count($matches) > 0) { ?>
+                    <table class="stats__table">
+                        <thead>
+                            <tr>
+                                <th>Match</th>
+                                <th>Score</th>
+                                <th>Game Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($matches as $match) { ?>
+                                <tr>
+                                    <td><?= $match['team1_name'] . " vs " . $match['team2_name'] ?></td>
+                                    <td><?= $match['team1_score'] ? $match['team1_score'] . " - " . $match['team2_score'] : "Not Yet Set" ?></td>
+                                    <td><?= $match['game_date'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                <?php } else { ?>
+                    <p class="stats__msg">No Matches Played <?= date("Y-m-d") . "  " .  date("now") ?></p>
+                <?php } ?>
+            </section>
+
+            <section class="future">
+                <h2 class="team__title">Future Matches</h2>
+                <?php if (count($future) > 0) { ?>
+                    <table class="stats__table">
+                        <thead>
+                            <tr>
+                                <th>Match</th>
+                                <!-- <th>Score</th> -->
+                                <th>Game Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($future as $match) { ?>
+                                <tr>
+                                    <td><?= $match['team1_name'] . " vs " . $match['team2_name'] ?></td>
+                                    <!-- <td><?= $match['team1_score'] . " - " . $match['team2_score'] ?></td> -->
+                                    <td><?= $match['game_date'] ?></td>
+                                    <td><?= substr($match['game_start'], 0, 5) . " - " . substr($match['game_end'], 0, 5) ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                <?php } else { ?>
+                    <p class="stats__msg">No Matches Scheduled Yet</p>
+                <?php } ?>
             </section>
         </div>
     </main>

@@ -28,6 +28,7 @@ bookBtn.addEventListener("click", () => {
   var game_date = $("#game-date").val();
   var game_start = $("#game-start").val();
   var game_end = $("#game-end").val();
+  var game_cost = $("#game-cost").val();
 
   if (team1 == "" || team2 == "") {
     toastr.warning("Fill in the Team Details", "Missing Info");
@@ -36,6 +37,8 @@ bookBtn.addEventListener("click", () => {
     if (team1 == "") $("#team1").trigger("focus");
     return;
   }
+
+  var time = (gameEnd.value - gameStart.value) / 10000;
 
   $.ajax({
     url: "/booking",
@@ -46,11 +49,10 @@ bookBtn.addEventListener("click", () => {
       game_date: game_date,
       game_start: game_start,
       game_end: game_end,
+      total_cost: game_cost,
+      no_of_hours: time,
     },
     success: (result) => {
-      // toastr.success("This shit works");
-      // console.log(result.message);
-
       if (result.message == 1)
         window.location.href = "redirect?id=" + result.game_id;
 

@@ -3,7 +3,8 @@
 :root {
   --nav-dark: #1b1b1b;
   --nav-primary: #1d7f1a;
-  --nav-light: #f0e6e6;
+  /* --nav-light: #f0e6e6; */
+  --nav-light: #fff;
 }
 
 * {
@@ -44,7 +45,7 @@ input {
 
 aside {
   flex: 1 1 0;
-  max-width: 60px;
+  max-width: 65px;
   background-color: var(--nav-primary);
   color: var(--nav-light);
   overflow: hidden;
@@ -64,9 +65,9 @@ aside a {
   align-items: center;
 
   text-decoration: none;
-  background-color: var(--nav-light);
+  background-color: var(--nav-primary);
   /* background-color: white; */
-  color: var(--nav-primary);
+  color: var(--nav-light);
   padding: 10px;
 }
 
@@ -74,6 +75,7 @@ aside a {
   height: 45px;
   width: 45px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .logo span {
@@ -112,6 +114,7 @@ aside a {
 
 .nav__link:hover {
   background-color: #eee;
+  background-color: white;
   color: var(--nav-primary);
   text-decoration: none;
 }
@@ -254,16 +257,10 @@ section.admin-section:not(.teams) {
 
 .admin__table {
   width: min(100%, 750px);
-  margin: 2em auto 0;
+  margin-inline: auto;
   border: 1px solid black;
   border-collapse: collapse;
 }
-
-/* .admin__table {
-  width: 100%;
-    margin-right: auto;
-    margin-top: 0;
-} */
 
 .admin__table thead tr {
   font-size: 1.1rem;
@@ -298,6 +295,10 @@ section.admin-section:not(.teams) {
   overflow-y: scroll;
 }
 
+tbody.admin__table--long {
+  max-height: 400px;
+}
+
 .admin__table,
 .admin__table tr {
   display: table;
@@ -326,6 +327,18 @@ section.admin-section:not(.teams) {
 .admin__msg {
   margin: 1.2rem auto;
   font-size: 1.1rem;
+}
+
+.admin__title--games {
+  font-size: 1.2rem;
+  margin: 1em auto;
+  font-weight: 700;
+}
+
+.admin__title {
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
 }
 
 /* Form */

@@ -1,4 +1,20 @@
-toastr.options = { positionClass: "toastr-top-right", closeButton: true };
+toastr.options = {
+  closeButton: true,
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: "toast-bottom-right",
+  preventDuplicates: true,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
 
 function MatchDetails() {
   var id = new URL(window.location.href).searchParams.get("id");
@@ -17,7 +33,7 @@ function MatchDetails() {
           parseInt(result.game_start.slice(0, 2))) *
         2000;
 
-      $("#match").text(`${result.team1} vs ${result.team2}`);
+      $("#match").text(`${result.team1_name} vs ${result.team2_name}`);
       $("#time").text(`${result.game_start} - ${result.game_end}hrs`);
       $("#date").text(`${result.game_date}`);
       $("#booked").text(`${result.created_at}`);

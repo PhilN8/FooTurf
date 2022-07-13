@@ -67,18 +67,13 @@
                     <?php foreach ($games as $game) { ?>
                         <div class="match-row">
                             <p class="match-title">Match:
-                                <a href="<?= base_url('team/' . $game['team1_id']) ?>"><?= $game['team1_id'] ?><a>
-                                        vs <a href="<?= base_url('team/' . $game['team2_id']) ?>"><?= $game['team2_id'] ?><a>
+                                <a href="<?= base_url('team/' . $game['team1_name']) ?>"><?= $game['team1_name'] ?><a>
+                                        vs <a href="<?= base_url('team/' . $game['team2_name']) ?>"><?= $game['team2_name'] ?><a>
                             </p>
                             <p class="match-time">Time: <?= substr($game['game_start'], 0, 5) . " - " . substr($game['game_end'], 0, 5) ?></p>
                         </div>
                     <?php } ?>
                 </div>
-                <?php
-                echo "<pre>";
-                print_r($games);
-                echo "</pre>";
-                ?>
             </div>
 
         </section>

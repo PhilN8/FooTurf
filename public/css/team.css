@@ -2,3 +2,66 @@
 .stats {
   padding-block: 3rem;
 }
+
+.team__title {
+  font-size: 2rem;
+}
+
+.hero__details {
+  font-size: 1.25rem;
+}
+
+.hero__details > p + p {
+  margin-top: 0.75rem;
+}
+
+.hero__details p span {
+  font-weight: 700;
+}
+
+.stats__table {
+  width: min(100%, 600px);
+  margin: 1.2rem 0 0 auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.stats__table thead tr {
+  font-size: 1.1rem;
+}
+
+.stats__table th {
+  border-right: 1px solid white;
+  text-align: center;
+  background-color: var(--nav-black, #1b1b1b);
+  color: var(--nav-white, #f0e6e6);
+  padding-block: 0.2rem;
+}
+
+.stats__table td {
+  border-right: 1px solid #222;
+  text-align: center;
+  padding-block: 0.2rem;
+}
+
+.stats__table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.stats__table tr:hover {
+  background-color: #ddd;
+}
+
+.stats__table tbody {
+  display: block;
+  max-height: 200px;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.stats__table,
+.stats__table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}

@@ -12,11 +12,12 @@ class Stats extends Controller
 {
     public function index()
     {
-        $sql = "tbl_teams.team_id=tbl_games.team1_id OR tbl_teams.team_id=tbl_games.team2_id";
+        $sql = "tbl_teams.team_name=tbl_games.team1_name OR tbl_teams.team_name=tbl_games.team2_name";
 
         $games = (new Game)->select()
-            ->join('tbl_teams', new RawSql($sql))
-            ->where('game_date', date('Y-m-d'))->findAll(8);
+            // ->join('tbl_teams', new RawSql($sql))
+            // ->where('game_date', date('Y-m-d'))
+            ->findAll(8);
 
         // foreach()
         $teams = (new Team)->findAll(8);
@@ -28,15 +29,17 @@ class Stats extends Controller
         return view('frontend/stats', $data);
     }
 
-    public function info(int $team_id)
+    public function info(string $team_name)
     {
 
-        $team = (new Team)->where('team_id', $team_id)->first();
-        $matches = (new Game)->where("team1_id = $team_id OR team2_id = $team_id")
+        $team = (new Team)->where('team_name', $team_name)->first();
+        $matches = (new Game)->where("(team1_name = '$team_name' OR team2_name = '$team_name') AND game_date <= CURRENT_DATE")
             // ->where('team2_id', $team_id)
             ->findAll(5);
 
-        $data = ['team' => $team, 'matches' => $matches];
+        $future = (new Game)->where("game_date >", date("Y-m-d"))->findAll(5);
+
+        $data = ['team' => $team, 'matches' => $matches, 'future' => $future];
         return view('frontend/team', $data);
 
         // return $this->response->setJSON($details);

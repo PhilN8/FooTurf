@@ -55,8 +55,8 @@ function editTeamInfo() {
 
 function editScores(game, team1, team2) {
   openSection("scores");
-  $("#team1-name").text(team1);
-  $("#team2-name").text(team2);
+  $("#team1-name").text(`${team1}`);
+  $("#team2-name").text(`${team2}`);
   $("#game-id").val(game);
   $("#score1").val("").trigger("focus");
 }
@@ -87,15 +87,18 @@ function addScores() {
       $("#scores-table tbody").empty();
       $("#games-table tbody").empty();
 
-      result.games.forEach((game) => {
-        $("#games-table tbody").append(
-          `<tr><td>${game.game_id}</td><td>${game.team1_id} vs ${game.team2_id}</td><td>None</td><td><button class="admin__btn--edit" onclick="editScores(${game.game_id}, ${game.team1_id}, ${game.team2_id})">Add Scores</button></td></tr>`
-        );
-      });
+      if (result.games.length === 0) $(".admin__msg").show();
+      else {
+        result.games.forEach((game) => {
+          $("#games-table tbody").append(
+            `<tr><td>${game.game_id}</td><td>${game.team1_name} vs ${game.team2_name}</td><td>None</td><td><button class="admin__btn--edit" onclick="editScores(${game.game_id}, ${game.team1_id}, ${game.team2_id})">Add Scores</button></td></tr>`
+          );
+        });
+      }
 
       result.scores.forEach((score) => {
         $("#scores-table tbody").append(
-          `<tr><td>${score.game_id}</td><td>${score.team1_id} vs ${score.team2_id}</td><td>${score.team1_score} - ${score.team2_score}</td><td>${score.game_date}</td></tr>`
+          `<tr><td>${score.game_id}</td><td>${score.team1_name} vs ${score.team2_name}</td><td>${score.team1_score} - ${score.team2_score}</td><td>${score.game_date}</td></tr>`
         );
       });
 

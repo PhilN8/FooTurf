@@ -44,7 +44,7 @@
                         <i class="fas fa-futbol"></i><span class="nav__span">Games</span>
                     </a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-wallet"></i><span class="nav__span">Wallet</span>
                     </a>
@@ -63,7 +63,7 @@
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-cog"></i><span class="nav__span">Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-question-circle"></i><span class="nav__span">Help</span>
@@ -86,8 +86,10 @@
             ?>
         </section>
 
+
+
         <section class="animate-opacity admin-section teams" id="teams">
-            <p class="admin__title">Teams</p>
+            <h2 class="admin__title">Teams</h2>
             <table class="admin__table">
                 <thead>
                     <tr>
@@ -98,7 +100,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="admin__table--long">
                     <?php foreach ($teams as $team) { ?>
                         <tr>
                             <td><?= $team['team_id'] ?></td>
@@ -172,6 +174,8 @@
 
         <section class="games animate-opacity admin-section" id="games">
             <h2 class="admin__title">Games</h2>
+
+            <p class="admin__title--games">Matches to Update</p>
             <table class="admin__table" id="games-table">
                 <thead>
                     <tr>
@@ -187,9 +191,9 @@
                         foreach ($games as $game) { ?>
                             <tr>
                                 <td><?= $game['game_id'] ?></td>
-                                <td><?= $game['team1_id'] . " vs " . $game['team2_id']  ?></td>
+                                <td><?= $game['team1_name'] . " vs " . $game['team2_name']  ?></td>
                                 <td><?= $game['team1_score'] && $game['team2_score'] ? ($game['team1_score'] . " - " . $game['team2_score']) : "N/A" ?></td>
-                                <td><button class="admin__btn--edit" onclick="editScores(<?= $game['game_id'] ?>, <?= $game['team1_id'] ?>, <?= $game['team2_id'] ?>)">Add Scores</button></td>
+                                <td><button class="admin__btn--edit" onclick="editScores(<?= $game['game_id'] ?>, '<?= $game['team1_name'] ?>', '<?= $game['team2_name'] ?>')">Add Scores</button></td>
                             </tr>
                         <?php }
                     } else { ?>
@@ -201,6 +205,7 @@
                 </tbody>
             </table>
 
+            <p class="admin__title--games">Previous Matches</p>
             <table class="admin__table" id="scores-table">
                 <thead>
                     <tr>
@@ -214,7 +219,7 @@
                     <?php foreach ($scores as $score) { ?>
                         <tr>
                             <td><?= $score['game_id'] ?></td>
-                            <td><?= $score['team1_id'] . " vs " .  $score['team2_id'] ?></td>
+                            <td><?= $score['team1_name'] . " vs " .  $score['team2_name'] ?></td>
                             <td><?= $score['team1_score'] . " - " . $score['team2_score'] ?></td>
                             <td><?= $score['game_date'] ?></td>
                         </tr>

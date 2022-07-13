@@ -10,8 +10,8 @@ class Game extends Model
     protected $primaryKey = 'game_id';
 
     protected $allowedFields = [
-        'team1_id',
-        'team2_id',
+        'team1_name',
+        'team2_name',
         'team1_score',
         'team2_score',
         'game_date',
@@ -32,7 +32,6 @@ class Game extends Model
                     'game_date' => $gameDetails['game_date'],
                     'game_start' => $gameDetails['game_start'],
                 ],
-                // [$gameDetails['game_date'], $gameDetails['game_start']]
             )->first();
 
         if ($game != null)

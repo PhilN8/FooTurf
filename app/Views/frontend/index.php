@@ -47,7 +47,7 @@
         </div>
 
 
-        <section class="services" id="services">
+        <!-- <section class="services" id="services">
             <div class="container services-container">
                 <div class="services__col">
                     <h2 class="services__col--title">
@@ -76,7 +76,98 @@
                     <a href="services.html" class="services__col--link">More Info</a>
                 </div>
             </div>
+        </section> -->
+
+        <section class="location">
+            <div class="container location-container">
+                <div class="location__info">
+                    <h2 class="location__info--title">Where We are Located
+                    </h2>
+                    <p class="location__info--text">Plainsview Road</p>
+                    <p class="location__info--text">Next to Gate A (Plainsview Estate)</p>
+                    <p class="location__info--text">South B, Nairobi</p>
+                </div>
+
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe id="gmap_canvas" width="100%" height="100%" src="https://maps.google.com/maps?q=Turf%20South%20B&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: min(50vh, 400px);
+                                width: min(100%, 600px);
+                            }
+                        </style>
+                        <a href="https://www.embedgooglemap.net">google map html widget</a>
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                margin-inline: auto;
+                                /* object-fit: cover; */
+                                background: none !important;
+                                /* height: 500px; */
+                                /* width: 600px; */
+
+                                height: 100%;
+                                width: min(100%, 600px);
+                            }
+
+                            iframe {
+                                display: block;
+                                max-width: 100%;
+                                object-fit: cover;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+
+            </div>
         </section>
+
+        <style>
+            .location__info--title {
+                font-size: 2rem;
+            }
+
+            .location__info--text {
+                font-size: 1.1rem;
+            }
+
+            .location__info {
+                text-align: center;
+                margin-bottom: 1.2rem;
+            }
+
+            @media screen and (min-width: 850px) {
+                .location-container {
+                    display: flex;
+                    /* gap: 2.5rem; */
+                    justify-content: space-between;
+                    /* flex-direction: row-reverse; */
+                }
+
+                .mapouter {
+                    /* flex-basis: 70%; */
+                    flex-grow: 1;
+                    align-self: center;
+                }
+
+                .location__info {
+                    flex-basis: 30%;
+                    margin-bottom: 0;
+                    align-self: center;
+                }
+            }
+
+            .location {
+                padding-block: 2.5rem;
+                background-color: var(--nav-primary);
+                background-color: #eee;
+                color: black;
+            }
+        </style>
 
         <section class="inquiry">
             <div class="container inquiry-container">
@@ -118,7 +209,7 @@
 
     <footer class="footer">
 
-        <div class="container">
+        <!-- <div class="container">
             <div class="footer-container">
                 <section class="footer__col">
                     <p class="footer__col--title">Our Contacts</p>
@@ -156,7 +247,7 @@
             </div>
 
 
-        </div>
+        </div> -->
 
         <p class="footer__bottom--text">
             © Copyright - FooTurf Ltd <?= date('Y') ?>.

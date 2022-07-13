@@ -1,4 +1,7 @@
 <?php
+
+use CodeIgniter\HTTP\Response;
+
 if (isset($_GET['id'])) {
 ?>
     <!DOCTYPE html>
@@ -8,13 +11,11 @@ if (isset($_GET['id'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
 
         <title>Game Details | FooTurf</title>
-
         <link rel="stylesheet" href="<?= base_url('css/common.css') ?>">
-        <link rel="stylesheet" href="<?= base_url('css/redirect.css') ?>">
         <link rel="stylesheet" href="<?= base_url('css/toastr.css') ?>">
+        <link rel="stylesheet" href="<?= base_url('css/redirect.css') ?>">
     </head>
 
     <body>
@@ -109,4 +110,10 @@ if (isset($_GET['id'])) {
 
     </html>
 
-<?php } else header('location:booking');
+<?php } else {
+    // $this->load->helper('url');
+    helper(['url']);
+    return redirect()->to(base_url('/booking'));
+}
+    // return (new Response)->redirect(base_url('/booking'));
+    // return $this->response->redirect(base_url('/booking'));

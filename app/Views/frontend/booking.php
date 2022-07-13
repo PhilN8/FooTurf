@@ -58,18 +58,6 @@
                         <label for="game-date" class="form__label">Date</label>
                     </div>
 
-                    <!-- <div class="form__box">
-                        <select class="form__input" name="game-time" id="game-time">
-                            <option value="1" selected>0800 - 1000hrs</option>
-                            <option value="2">1000 - 1200hrs</option>
-                            <option value="3">1200 - 1400hrs</option>
-                            <option value="4">1400 - 1600hrs</option>
-                            <option value="5">1600 - 1800hrs</option>
-                            <option value="6">1800 - 2000hrs</option>
-                        </select>
-                        <label for="game-time" class="form__label">Slots Available</label>
-                    </div> -->
-
                     <div class="form__box">
                         <select name="game-start" id="game-start" class="form__input">
                             <option value="080000" selected>8am</option>
@@ -113,7 +101,7 @@
                     </div>
 
                     <div class="form__box">
-                        <input type="number" class="form__input" name="hours" id="hours" min="1" max="3" value="1">
+                        <input type="number" class="form__input" name="hours" id="hours" min="1" max="3" value="1" readonly>
                         <label for="hours" class="form__label">Number of Hours</label>
                     </div>
 
