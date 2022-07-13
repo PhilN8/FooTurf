@@ -95,7 +95,7 @@ function SetMinDate() {
   var today = now.getFullYear() + "-" + month + "-" + day;
 
   $("#game-date").val(today);
-  $("#game-date").attr("min", today);
+  // $("#game-date").attr("min", today);
 }
 
 function ChangeCost() {

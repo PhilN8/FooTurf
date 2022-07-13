@@ -251,7 +251,11 @@ aside:hover {
   margin-inline: auto;
 }
 
-section.admin-section:not(.teams) {
+section.admin-section {
+  min-height: 100vh;
+}
+
+section.admin-section:not(.analytics) {
   display: none;
 }
 
@@ -410,12 +414,35 @@ tbody.admin__table--long {
 }
 
 .form__btn--cancel {
-  background-color: #b41b1b;
-  border-color: #b41b1b;
+  background-color: #e41717;
+  border-color: #e41717;
 }
 
 .form__btn--cancel:hover,
 .form__btn--cancel:focus {
   border-color: #701010;
   background-color: #701010;
+}
+
+/* Payments */
+#payment .admin__table tfoot td {
+  padding-block: 0.5em;
+  background-color: #000;
+  color: white;
+  border-top: 1px solid var(--nav-dark);
+}
+
+#payment .admin__table tfoot td.has-info {
+  color: var(--nav-dark);
+  background-color: white;
+  font-weight: 700;
+}
+
+/* Analytics */
+.analytics .form__btn--group {
+  width: min(100%, 300px);
+}
+
+.admin-chart:not(#chart_cash) {
+  display: none;
 }

@@ -44,17 +44,17 @@
                         <i class="fas fa-futbol"></i><span class="nav__span">Games</span>
                     </a>
                 </li>
-                <!-- <li class="nav__item">
-                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
-                        <i class="fas fa-wallet"></i><span class="nav__span">Wallet</span>
+                <li class="nav__item">
+                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('payment')">
+                        <i class="fas fa-wallet"></i><span class="nav__span">Payments</span>
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
+                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('analytics')">
                         <i class="fas fa-chart-bar"></i><span class="nav__span">Analytics</span>
                     </a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-tasks"></i><span class="nav__span">Tasks</span>
                     </a>
@@ -81,6 +81,7 @@
     <main class="main">
         <section class="animate-opacity intro admin-section" id="intro">
             <?php
+
             echo "BULLSHIVIK " . session()->name . "<br>";
             echo "<a href=" . base_url('/logout') . ">Logout</a>";
             ?>
@@ -113,10 +114,6 @@
                 </tbody>
             </table>
         </section>
-
-        <script>
-
-        </script>
 
         <section class="animate-opacity admin-section edit" id="edit">
             <h2 class="admin__title">Edit Team Information</h2>
@@ -167,10 +164,6 @@
                 </div>
             </div>
         </section>
-
-        <script>
-
-        </script>
 
         <section class="games animate-opacity admin-section" id="games">
             <h2 class="admin__title">Games</h2>
@@ -227,11 +220,163 @@
                 </tbody>
             </table>
         </section>
+
+        <section class="payment animate-opacity admin-section" id="payment">
+            <h2 class="admin__title">Payments</h2>
+            <table class="admin__table">
+                <thead>
+                    <tr>
+                        <th>Game ID</th>
+                        <th>Match</th>
+                        <th>No. of Hours</th>
+                        <th>Cost</th>
+                        <th>Played On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $total_cost = 0;
+                    foreach ($payments as $payment) {
+                        $total_cost += $payment['total_cost']; ?>
+                        <tr>
+                            <td><?= $payment['game_id'] ?></td>
+                            <td><?= $payment['team1_name'] . " vs " .  $payment['team2_name'] ?></td>
+                            <td><?= $payment['no_of_hours'] ?></td>
+                            <td><?= $payment['total_cost'] ?></td>
+                            <td><?= $payment['game_date'] ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total Matches</td>
+                        <td class="has-info"><?= count($payments) ?></td>
+                        <td>Total Cost</td>
+                        <td class="has-info"><?= $total_cost ?></td>
+                        <!-- <td></td> -->
+                    </tr>
+                </tfoot>
+            </table>
+
+            <style>
+
+            </style>
+        </section>
+
+        <section class="analytics animate-opacity admin-section" id="analytics">
+            <h2 class="admin__title">Analytics</h2>
+            <div class="form__btn--group">
+                <button class="form__btn form__btn--submit" onclick="openChart('chart_cash')">Cash</button>
+                <button class="form__btn form__btn--cancel" onclick="openChart('chart_games')">Games</button>
+            </div>
+            <div class="admin-chart animate-opacity" id="chart_cash"></div>
+            <div class="admin-chart animate-opacity" id="chart_games"></div>
+        </section>
+
+        <script>
+            function openChart(chart) {
+                var x = document.getElementsByClassName("admin-chart");
+                for (i = 0; i < x.length; i++) x[i].style.display = "none";
+
+                document.getElementById(chart).style.display = "block";
+            }
+        </script>
+
+        <style>
+
+        </style>
     </main>
 
     <script src="<?= base_url('scripts/jquery.min.js') ?>"></script>
     <script src="<?= base_url('scripts/toastr.js') ?>"></script>
     <script src="<?= base_url('scripts/admin.js') ?>"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        google.charts.load("current", {
+            packages: ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data_cash = google.visualization.arrayToDataTable([
+                ['Day', 'Cash', {
+                    role: 'style'
+                }],
+
+                <?php
+                $days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                $colors = ['red', 'gold', 'silver', 'dodgerblue', 'black', 'blue', 'green'];
+                foreach ($cash as $value => $cash) {
+
+                    echo "['" . $days[$value] . "', " . $cash['Cash'] . ", '" . $colors[$value] . "'],";
+                } ?>
+            ]);
+
+            var view_cash = new google.visualization.DataView(data_cash);
+            view_cash.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2
+            ]);
+
+            var data_games = google.visualization.arrayToDataTable([
+                ['Day', 'Cash', {
+                    role: 'style'
+                }],
+                <?php foreach ($gamesPerDay as $value => $games)
+                    echo "['" . $days[$value] . "', " . $games['Games'] . ", '" . $colors[$value] . "'],";
+                ?>
+            ])
+
+            var view_games = new google.visualization.DataView(data_games);
+            view_games.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2
+            ]);
+
+            var options_cash = {
+                title: "Money Collected, per Weekday",
+                width: 850,
+                height: 400,
+                bar: {
+                    groupWidth: "95%"
+                },
+                legend: {
+                    position: "none"
+                },
+            };
+
+            var options_games = {
+                title: "Games Played, per Weekday",
+                width: 850,
+                height: 400,
+                bar: {
+                    groupWidth: "95%"
+                },
+                legend: {
+                    position: "none"
+                },
+            };
+
+            var chart_cash = new google.visualization.ColumnChart(document.getElementById("chart_cash"));
+            chart_cash.draw(view_cash, options_cash);
+
+            var chart_games = new google.visualization.ColumnChart(document.getElementById("chart_games"));
+            chart_games.draw(view_games, options_games);
+        }
+    </script>
+
 </body>
 
 </html>
