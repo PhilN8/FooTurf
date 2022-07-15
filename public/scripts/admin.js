@@ -58,6 +58,7 @@ function editScores(game, team1, team2) {
   $("#team1-name").text(`${team1}`);
   $("#team2-name").text(`${team2}`);
   $("#game-id").val(game);
+  console.log(team1, team2);
   $("#score1").val("").trigger("focus");
 }
 
@@ -91,7 +92,7 @@ function addScores() {
       else {
         result.games.forEach((game) => {
           $("#games-table tbody").append(
-            `<tr><td>${game.game_id}</td><td>${game.team1_name} vs ${game.team2_name}</td><td>None</td><td><button class="admin__btn--edit" onclick="editScores(${game.game_id}, ${game.team1_id}, ${game.team2_id})">Add Scores</button></td></tr>`
+            `<tr><td>${game.game_id}</td><td>${game.team1_name} vs ${game.team2_name}</td><td>None</td><td><button class="admin__btn--edit" onclick="editScores(${game.game_id}, '${game.team1_name}', '${game.team2_name}')">Add Scores</button></td></tr>`
           );
         });
       }
@@ -104,8 +105,17 @@ function addScores() {
 
       openSection("games");
       $("#score1").val("");
-      $("#score1").val("");
+      $("#score2").val("");
     },
     error: () => toastr.error("Something went wrong"),
   });
 }
+
+function getAllStats() {
+  $.ajax({
+    url: "admin/allStats",
+    success: (result) => console.log(result),
+  });
+}
+
+jQuery(() => getAllStats());

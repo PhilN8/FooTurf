@@ -42,41 +42,11 @@
             <section class="hero">
                 <p class="hero__title">Welcome to FooTurf</p>
                 <p class="hero__text">One-Stop Shop For Your Football Games</p>
-                <button class="hero__btn"><a href="#" class="hero__link">Book a Game</a></button>
+                <button class="hero__btn"><a href="<?= base_url('/booking') ?>" class="hero__link">Book a Game</a></button>
             </section>
         </div>
 
 
-        <!-- <section class="services" id="services">
-            <div class="container services-container">
-                <div class="services__col">
-                    <h2 class="services__col--title">
-                        Passenger Services
-                    </h2>
-                    <img src="img/bus-2.jpg" alt="image of bus" class="services__col--img">
-                    <p class="services__col--text">
-                        Our reputation has been built upon being the Number 1
-                        transport service in the country. We have a fleet of
-                        buses and an experienced team of drivers dedicated to
-                        getting you wherever you want to go.
-                    </p>
-                    <a href="book_online.php" class="services__col--link">Book a Ticket</a>
-                </div>
-                <div class="services__col">
-                    <h2 class="services__col--title">
-                        Courier Services
-                    </h2>
-                    <img src="img/package.jpg" alt="image of person inspecting packages" class="services__col--img">
-                    <p class="services__col--text">
-                        We use our extensive coverage to deliver packages,
-                        letters and other goods. Our aim is to provide customized
-                        logistic solutions to our esteemed clients through our extensive
-                        network.
-                    </p>
-                    <a href="services.html" class="services__col--link">More Info</a>
-                </div>
-            </div>
-        </section> -->
 
         <section class="location">
             <div class="container location-container">
@@ -87,7 +57,8 @@
                     <p class="location__info--text">Next to Gate A (Plainsview Estate)</p>
                     <p class="location__info--text">South B, Nairobi</p>
                 </div>
-
+                <!-- COUNT(b.team2_score) AS goalsFor2 -->
+                <!-- SELECT a.team_name, SUM(b.team1_score) as goalsFor1, SUM(b.team1_score) as goalsFor2 FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (a.team_name = b.team1_name OR a.team_name=b.team2_name) GROUP BY a.team_name -->
                 <div class="mapouter">
                     <div class="gmap_canvas">
                         <iframe id="gmap_canvas" width="100%" height="100%" src="https://maps.google.com/maps?q=Turf%20South%20B&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br>
@@ -261,3 +232,11 @@
 </body>
 
 </html>
+
+<!-- SELECT a.team_name, SUM(b.team1_score) as goalsFor1, SUM(b.team2_score) as goalsFor2 FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name = "Panenka" OR b.team2_name='Panenka') GROUP BY a.team_name -->
+
+<!-- SELECT a.team_name AS team, SUM(b.team1_score) as goalsForHome FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name =a.team_name) GROUP BY a.team_name -->
+<!-- SELECT a.team_name AS team, SUM(b.team2_score) as goalsForAway FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team2_name =a.team_name) GROUP BY a.team_name -->
+
+<!-- SELECT a.team_name AS team, COUNT(b.game_id) as gamesHome FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name =a.team_name) GROUP BY a.team_name -->
+<!-- SELECT a.team_name AS team, COUNT(b.game_id) as gamesAway FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team2_name =a.team_name) GROUP BY a.team_name -->

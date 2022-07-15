@@ -255,7 +255,7 @@ section.admin-section {
   min-height: 100vh;
 }
 
-section.admin-section:not(.analytics) {
+section.admin-section:not(.stats) {
   display: none;
 }
 

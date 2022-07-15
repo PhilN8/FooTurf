@@ -23,6 +23,7 @@ class Admin extends BaseController
         $data['gamesPerDay'] = (db_connect())->query(
             "SELECT COUNT(`game_id`) AS Games, WEEKDAY(game_date) as Day FROM tbl_games GROUP BY Day"
         )->getResultArray() ?? [];
+        $data['allStats'] = (new Game)->getStatsAll();
 
         if (count($data['cash']) < 7) {
             $diff = 7 - count($data['cash']);
@@ -74,5 +75,34 @@ class Admin extends BaseController
             'games' => $games,
             'scores' => $scores
         ]);
+    }
+
+    public function getStats()
+    {
+        helper(['form']);
+
+        $rules = ['team' => 'is_unique[tbl_teams.team_name]'];
+        if ($this->validate($rules))
+            return $this->response->setJSON(['error' => true]);
+
+        $team = $this->request->getVar('team');
+        // return $this->response->setJSON([
+        //     'totalGames' => (new Game)->getStats($team)[0],
+        //     'totalGamesValid' => (new Game)->getStats($team)[1],
+        //     'totalGoalsFor' => (new Game)->getStats($team)[2],
+        //     'totalGoalsAgainst' => (new Game)->getStats($team)[3]
+        // ]);
+        return $this->response->setJSON([
+            'gamesBooked' => (new Game)->getStats($team)[0],
+            'gamesPlayed' => (new Game)->getStats($team)[1],
+            'goalsFor' => (new Game)->getStats($team)[2],
+            'goalsAgainst' => (new Game)->getStats($team)[3],
+            // 'allStats' => (new Game)->getStatsAll()
+        ]);
+    }
+
+    public function getStatsAll()
+    {
+        return $this->response->setJSON(['allStats' => (new Game)->getStatsAll()]);
     }
 }

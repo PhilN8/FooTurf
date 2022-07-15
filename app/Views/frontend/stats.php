@@ -49,14 +49,59 @@
 
         <style>
             .match-container {
-                display: flex;
-                gap: 1.5rem;
+                margin-top: 1rem;
             }
 
             .match-row {
+                /* flex-basis: 100%; */
                 padding: 25px 30px;
                 background-color: var(--nav-light);
                 color: var(--nav-primary);
+                text-align: center;
+
+                /* width: max-content; */
+                margin-bottom: 1.2rem;
+            }
+
+            .match-title a {
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.2rem;
+                /* margin-right: 0.25rem; */
+                color: black;
+                color: var(--nav-primary);
+            }
+
+            .match-title a:hover {
+                color: dodgerblue;
+                text-decoration: underline;
+            }
+
+            .match-title span.no-link:hover {
+                text-decoration: none;
+            }
+
+            .match-title span.no-link {
+                font-weight: normal;
+                color: #222;
+                margin-inline: 0.25rem;
+            }
+
+            .match-time {
+                color: var(--nav-dark);
+            }
+
+            @media all and (min-width: 600px) {
+                .match-container {
+                    display: flex;
+                    /* gap: 1.5rem; */
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                }
+
+                .match-row {
+                    width: calc(100% / 2 - 1.25rem);
+                }
             }
         </style>
 
@@ -64,14 +109,20 @@
             <div class="container">
                 <h2 class="match__title">Today's Matches</h2>
                 <div class="match-container">
-                    <?php foreach ($games as $game) { ?>
-                        <div class="match-row">
-                            <p class="match-title">Match:
-                                <a href="<?= base_url('team/' . $game['team1_name']) ?>"><?= $game['team1_name'] ?><a>
-                                        vs <a href="<?= base_url('team/' . $game['team2_name']) ?>"><?= $game['team2_name'] ?><a>
-                            </p>
-                            <p class="match-time">Time: <?= substr($game['game_start'], 0, 5) . " - " . substr($game['game_end'], 0, 5) ?></p>
-                        </div>
+                    <?php if (count($games) > 0) {
+                        foreach ($games as $game) { ?>
+                            <div class="match-row">
+                                <div class="match-title">
+                                    <span><a href="<?= base_url('team/' . $game['team1_name']) ?>"><?= $game['team1_name'] ?></a></span>
+                                    <span class="no-link">vs</span>
+                                    <span><a href="<?= base_url('team/' . $game['team2_name']) ?>"><?= $game['team2_name'] ?></a></span>
+                                </div>
+                                <p class="match-time">Time: <?= substr($game['game_start'], 0, 5) . " - " . substr($game['game_end'], 0, 5) ?></p>
+                            </div>
+                        <?php }
+                    } else { ?>
+                        <p class="stats__msg">No Games Scheduled For Today</p>
+                        <a href="<?= base_url('/booking') ?>" class="stats__btn">Book Now</a>
                     <?php } ?>
                 </div>
             </div>

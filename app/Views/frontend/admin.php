@@ -1,3 +1,9 @@
+<?php
+function ratings($games, $GD)
+{
+    return ($games * 0.5 + $GD * 0.1);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -272,6 +278,42 @@
             <div class="admin-chart animate-opacity" id="chart_games"></div>
         </section>
 
+        <section class="stats admin-section animate-opacity" id="stats">
+            <h2 class="admin__title">Stats</h2>
+            <div class="form__box">
+                <input type="text" placeholder=" " class="form__input" id="search-name">
+                <label for="search-name" class="form__label">Team Name</label>
+            </div>
+            <button class="form__btn form__btn--submit" onclick="searchStats()">Update</button>
+            <table class="admin__table">
+                <thead>
+                    <tr>
+                        <th>Team</th>
+                        <!-- <th>Games Booked</th> -->
+                        <th>Games Played</th>
+                        <th>GD</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($allStats as $key => $stats) { #print_r($stats); 
+                        $GD = $stats[2] - $stats[3];
+                        $games = $stats[1];
+                    ?>
+                        <tr>
+                            <td><?= $key ?></td>
+                            <!-- <td><?= $stats[0] ?></td> -->
+                            <td><?= $stats[1] ?></td>
+                            <td><?= $stats[2] - $stats[3] ?></td>
+                            <td><?= ratings($games, $GD) ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+
+
+        </section>
+
         <script>
             function openChart(chart) {
                 var x = document.getElementsByClassName("admin-chart");
@@ -279,11 +321,30 @@
 
                 document.getElementById(chart).style.display = "block";
             }
+
+            function searchStats() {
+                var team = $('#search-name').val().trim()
+
+                if (team === '') {
+                    toastr.warning("Enter Team Name");
+                    $('#search-name').trigger("focus")
+                    return;
+                }
+
+                $.ajax({
+                    url: '/admin/stats',
+                    method: 'POST',
+                    data: {
+                        team: team
+                    },
+                    success: (result) => console.log(result),
+                    error: (data) => {
+                        toastr.error("Something Went Wrong")
+                        console.error(data.responseText, data.responseJSON)
+                    }
+                })
+            }
         </script>
-
-        <style>
-
-        </style>
     </main>
 
     <script src="<?= base_url('scripts/jquery.min.js') ?>"></script>
