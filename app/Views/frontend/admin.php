@@ -1,7 +1,7 @@
 <?php
-function ratings($games, $GD)
+function ratings($games, $goalsFor, $goalsAgainst)
 {
-    return ($games * 0.5 + $GD * 0.1);
+    return ($games * 0.5 + $goalsFor * 0.25 - $goalsAgainst * 0.1);
 }
 ?>
 <!DOCTYPE html>
@@ -297,7 +297,8 @@ function ratings($games, $GD)
                 </thead>
                 <tbody>
                     <?php foreach ($allStats as $key => $stats) { #print_r($stats); 
-                        $GD = $stats[2] - $stats[3];
+                        $GF = $stats[2];
+                        $GA = $stats[3];
                         $games = $stats[1];
                     ?>
                         <tr>
@@ -305,7 +306,7 @@ function ratings($games, $GD)
                             <!-- <td><?= $stats[0] ?></td> -->
                             <td><?= $stats[1] ?></td>
                             <td><?= $stats[2] - $stats[3] ?></td>
-                            <td><?= ratings($games, $GD) ?></td>
+                            <td><?= ratings($games, $GF, $GA) ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
