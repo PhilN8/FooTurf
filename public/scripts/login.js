@@ -40,7 +40,7 @@ $("#loginForm").on("submit", (evt) => {
     success: (result) => {
       console.log(result);
       if (result.message == 1) {
-        toastr.info("Dojo 2DA MOOn");
+        toastr.info("Login Successful");
         window.location.href = "http://localhost:8080/admin";
       }
 

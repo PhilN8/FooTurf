@@ -44,6 +44,8 @@
             <section class="animate-opacity book" id="book">
                 <p class="book__title">Book A Game</p>
                 <p class="book__text">Fill in the required details about teams playing and the time</p>
+
+                <p class="form__title">Team Details</p>
                 <div class="form__container">
                     <div class="form__box">
                         <input type="text" class="form__input" name="team1" id="team1" placeholder=" ">
@@ -54,14 +56,20 @@
                         <input type="text" class="form__input" name="team2" id="team2" placeholder=" ">
                         <label for="team2" class="form__label">Team 2 Name</label>
                     </div>
+                </div>
+                <style>
 
-                    <!-- <div class="form__box"></div> -->
+                </style>
 
+                <!-- <div class="form__box"></div> -->
+
+
+                <p class="form__title">Time Details</p>
+                <div class="form__container">
                     <div class="form__box">
                         <input type="date" class="form__input" name="game-date" id="game-date">
                         <label for="game-date" class="form__label">Date</label>
                     </div>
-                    <div class="form__box"></div>
 
                     <div class="form__box">
                         <select name="game-start" id="game-start" class="form__input">
@@ -109,15 +117,25 @@
                         <input type="number" class="form__input" name="hours" id="hours" min="1" max="3" value="1" readonly>
                         <label for="hours" class="form__label">Number of Hours</label>
                     </div>
+                </div>
 
-                    <div class="form__box" style="display: none;">
-                        <input type="number" class="form__input" name="game-cost" id="game-cost" value="2000" readonly>
-                        <label for="game-cost" class="form__label">Cost Per Hour</label>
-                    </div>
+                <div class="form__box" style="display: none;">
+                    <input type="number" class="form__input" name="game-cost" id="game-cost" value="2000" readonly>
+                    <label for="game-cost" class="form__label">Cost Per Hour</label>
+                </div>
 
+                <p class="form__title">Payment Details</p>
+                <div class="form__container">
+                    <!-- <div class="form__box"></div> -->
+                    <!-- <div class="form__box"></div> -->
                     <div class="form__box">
                         <input type="number" class="form__input" name="total-cost" id="total-cost" value="2000" readonly>
                         <label for="total-cost" class="form__label">Total</label>
+                    </div>
+
+                    <div class="form__box">
+                        <input type="number" class="form__input" name="phone" id="phone" placeholder=" ">
+                        <label for="phone" class="form__label">Phone Number</label>
                     </div>
 
                 </div>

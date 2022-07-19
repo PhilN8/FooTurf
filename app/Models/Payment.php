@@ -11,7 +11,9 @@ class Payment extends Model
     protected $allowedFields = [
         'game_id',
         'no_of_hours',
-        'total_cost'
+        'total_cost',
+        'phone_number',
+        'pay_code'
     ];
 
     protected $useTimestamps = true;

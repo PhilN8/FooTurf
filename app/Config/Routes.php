@@ -46,6 +46,7 @@ $routes->post('/admin/stats', 'Admin::getStats');
 $routes->get('/admin/allStats', 'Admin::getStatsAll');
 $routes->get('/booking', 'Booking::index');
 $routes->post('/booking', 'Booking::book');
+$routes->get('/pay', 'Booking::pay');
 $routes->get('/redirect', 'Booking::redirect');
 $routes->post('/redirect', 'Booking::game');
 $routes->get('/stats', 'Stats::index');

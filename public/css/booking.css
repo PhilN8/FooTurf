@@ -5,6 +5,18 @@
   --hover-secondary: #7a0d0d;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .float-right {
   float: right;
 }
@@ -20,6 +32,12 @@
 
 .form__container {
   margin: 1.25rem 0 0.75rem;
+}
+
+.form__title {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .form__box {

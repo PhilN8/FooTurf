@@ -19,9 +19,9 @@ class Admin extends BaseController
         $data['games'] = (new Game)->where('team1_score', null)->orderBy('game_date', 'ASC')->findAll();
         $data['scores'] = (new Game)->where('team1_score !=', null)->orderBy('game_date', 'ASC')->findAll();
         $data['payments'] = (new Payment)->join('tbl_games', 'tbl_games.game_id=tbl_payments.game_id')
-            // ->where('team1_score !=', null)
+            ->orderBy('game_date', 'ASC')
             ->findAll();
-        // $data['cash'] = (db_connect())->query(
+
         $data['cash'] = $this->db->query(
             "SELECT SUM(a.total_cost) AS Cash, WEEKDAY(b.`game_date`) AS Day FROM `tbl_payments` AS a INNER JOIN tbl_games AS b ON a.game_id = b.game_id GROUP BY Day"
         )->getResultArray() ?? [];
@@ -107,19 +107,12 @@ class Admin extends BaseController
             return $this->response->setJSON(['error' => true]);
 
         $team = $this->request->getVar('team');
-        // return $this->response->setJSON([
-        //     'totalGames' => (new Game)->getStats($team)[0],
-        //     'totalGamesValid' => (new Game)->getStats($team)[1],
-        //     'totalGoalsFor' => (new Game)->getStats($team)[2],
-        //     'totalGoalsAgainst' => (new Game)->getStats($team)[3]
-        // ]);
         $teamStats = (new Game)->getStats($team);
         return $this->response->setJSON([
             'gamesBooked' => $teamStats[0],
             'gamesPlayed' => $teamStats[1],
             'goalsFor' => $teamStats[2],
             'goalsAgainst' => $teamStats[3],
-            // 'allStats' => (new Game)->getStatsAll()
         ]);
     }
 

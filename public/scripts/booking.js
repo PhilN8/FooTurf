@@ -29,16 +29,19 @@ bookBtn.addEventListener("click", () => {
   var game_start = $("#game-start").val();
   var game_end = $("#game-end").val();
   var game_cost = $("#game-cost").val();
+  var phone = $("#phone").val().trim();
 
-  if (team1 == "" || team2 == "") {
+  if (team1 == "" || team2 == "" || phone == "") {
     toastr.warning("Fill in the Team Details", "Missing Info");
 
+    if (phone == "") $("#phone").trigger("focus");
     if (team2 == "") $("#team2").trigger("focus");
     if (team1 == "") $("#team1").trigger("focus");
     return;
   }
 
   var time = (gameEnd.value - gameStart.value) / 10000;
+  toastr.info("One moment to finalize", "Transaction Ongoing");
 
   $.ajax({
     url: "/booking",
@@ -51,6 +54,7 @@ bookBtn.addEventListener("click", () => {
       game_end: game_end,
       total_cost: game_cost * time,
       no_of_hours: time,
+      phone: phone,
     },
     success: (result) => {
       if (result.message == 1)
@@ -60,7 +64,7 @@ bookBtn.addEventListener("click", () => {
         toastr.error("Game is Already Booked", "Time Unavailable");
     },
     error: (data) => {
-      toastr.error("This doesn't work");
+      toastr.error("Something Went Wrong");
       console.error(data.responseText, data.responseJSON);
     },
   });
@@ -95,7 +99,7 @@ function SetMinDate() {
   var today = now.getFullYear() + "-" + month + "-" + day;
 
   $("#game-date").val(today);
-  // $("#game-date").attr("min", today);
+  $("#game-date").attr("min", today);
 }
 
 function ChangeCost() {
