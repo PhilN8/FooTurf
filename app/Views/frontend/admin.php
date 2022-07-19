@@ -1,7 +1,7 @@
 <?php
 function ratings($games, $goalsFor, $goalsAgainst)
 {
-    return ($games * 0.5 + $goalsFor * 0.25 - $goalsAgainst * 0.1);
+    return round((($goalsFor * 0.5 - $goalsAgainst * 0.3) / $games), 2);
 }
 ?>
 <!DOCTYPE html>
@@ -60,12 +60,12 @@ function ratings($games, $goalsFor, $goalsAgainst)
                         <i class="fas fa-chart-bar"></i><span class="nav__span">Analytics</span>
                     </a>
                 </li>
-                <!-- <li class="nav__item">
-                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
-                        <i class="fas fa-tasks"></i><span class="nav__span">Tasks</span>
+                <li class="nav__item">
+                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('stats')">
+                        <i class="fas fa-tasks"></i><span class="nav__span">Stats</span>
                     </a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-cog"></i><span class="nav__span">Settings</span>
                     </a>
@@ -113,7 +113,7 @@ function ratings($games, $goalsFor, $goalsAgainst)
                             <td><?= $team['team_id'] ?></td>
                             <td><?= $team['team_name'] ?></td>
                             <td id="captain<?= $team['team_id'] ?>"><?= $team['captain_name'] ?? "Not Set" ?></td>
-                            <td id="contact<?= $team['team_id'] ?>"><?= $team['contact_info'] ?? "Not Set" ?></td>
+                            <td id="contact<?= $team['team_id'] ?>"><?php echo $team['contact_info'] != null ?   "0" . $team['contact_info'] :  "Not Set" ?></td>
                             <td><button onclick="editTeam(<?= $team['team_id'] ?>)" class="admin__btn--edit">Edit</button></td>
                         </tr>
                     <?php } ?>
@@ -239,7 +239,7 @@ function ratings($games, $goalsFor, $goalsAgainst)
                         <th>Played On</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="admin__table--long">
                     <?php $total_cost = 0;
                     foreach ($payments as $payment) {
                         $total_cost += $payment['total_cost']; ?>
@@ -300,6 +300,9 @@ function ratings($games, $goalsFor, $goalsAgainst)
                         $GF = $stats[2];
                         $GA = $stats[3];
                         $games = $stats[1];
+
+                        if ($games < 1) continue;
+                        // if (ratings($games, $GF, $GA) < 0.5) continue;
                     ?>
                         <tr>
                             <td><?= $key ?></td>

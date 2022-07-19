@@ -38,6 +38,7 @@
     </header>
 
     <main class="main animate-opacity">
+
         <div class="container">
             <section class="hero">
                 <p class="hero__title">Welcome to FooTurf</p>
@@ -45,7 +46,6 @@
                 <button class="hero__btn"><a href="<?= base_url('/booking') ?>" class="hero__link">Book a Game</a></button>
             </section>
         </div>
-
 
 
         <section class="location">
@@ -57,8 +57,7 @@
                     <p class="location__info--text">Next to Gate A (Plainsview Estate)</p>
                     <p class="location__info--text">South B, Nairobi</p>
                 </div>
-                <!-- COUNT(b.team2_score) AS goalsFor2 -->
-                <!-- SELECT a.team_name, SUM(b.team1_score) as goalsFor1, SUM(b.team1_score) as goalsFor2 FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (a.team_name = b.team1_name OR a.team_name=b.team2_name) GROUP BY a.team_name -->
+
                 <div class="mapouter">
                     <div class="gmap_canvas">
                         <iframe id="gmap_canvas" width="100%" height="100%" src="https://maps.google.com/maps?q=Turf%20South%20B&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br>
@@ -141,23 +140,9 @@
         </style>
 
         <section class="inquiry">
-            <div class="container inquiry-container">
-                <div class="inquiry__col">
-                    <!--                    <img src="img/banner-inquiry.jpg" alt="Inquiry banner" class="inquiry__img">-->
-                    <p class="inquiry__text--title">Visit Us</p>
-                    <p class="inquiry__text--normal">
-                        Railways<br />Nairobi, Kenya
-                    </p>
-                    <p class="inquiry__text--title">Call Us</p>
-                    <p class="inquiry__text--normal">
-                        0738200301
-                    </p>
-                    <p class="inquiry__text--title">Write to Us</p>
-                    <p class="inquiry__text--normal">
-                        info@easycoach.co.ke
-                    </p>
-                </div>
-                <div class="inquiry__col inquiry__col--comment">
+            <div class="container">
+
+                <div class="inquiry__box">
                     <h2 class="inquiry__title">Write Us a Comment!</h2>
                     <div class="book__form--box">
                         <input type="text" name="fname" id="fname" class="book__form--input" placeholder=" ">
@@ -174,52 +159,12 @@
                     </div>
                     <button type="submit" class="inquiry__btn" onclick="sendComment()">Submit</button>
                 </div>
+
             </div>
         </section>
     </main>
 
     <footer class="footer">
-
-        <!-- <div class="container">
-            <div class="footer-container">
-                <section class="footer__col">
-                    <p class="footer__col--title">Our Contacts</p>
-
-                    <p class="footer__col--contact">Head Office: Railways Godown, Nairobi</p>
-                    <p class="footer__col--contact">Email: info@easycoach.co.ke</p>
-                    <p class="footer__col--contact">Phone: 0738200301</p>
-                    <p class="footer__col--contact">Website: easycoach.co.ke</p>
-
-                </section>
-
-                <section class="footer__col">
-                    <p class="footer__col--title">About Us</p>
-                    <p class="footer__col--text">
-                        Our mission is to be the Best Road Passenger Transport Company in East Africa.
-
-                        We are a passenger transport and courier service provider registered in the
-                        Republic of Kenya with an extensive branch network in Western and Nyanza provinces.
-
-                    </p>
-                </section>
-
-                <section class="footer__col">
-                    <p class="footer__col--title">
-                        Quick Links
-                    </p>
-
-                    <ul class="footer__col--list">
-                        <li class="footer__col--item"><a href="<?= base_url('/login') ?>" class="footer__col--link">Admin Login</a></li>
-                        <li class="footer__col--item"><a href="services.html" class="footer__col--link">Services</a></li>
-                        <li class="footer__col--item"><a href="about-us.html" class="footer__col--link">About Us</a></li>
-                        <li class="footer__col--item"><a href="routes.html" class="footer__col--link">Routes</a></li>
-                    </ul>
-                </section>
-            </div>
-
-
-        </div> -->
-
         <p class="footer__bottom--text">
             © Copyright - FooTurf Ltd <?= date('Y') ?>.
         </p>
@@ -232,11 +177,3 @@
 </body>
 
 </html>
-
-<!-- SELECT a.team_name, SUM(b.team1_score) as goalsFor1, SUM(b.team2_score) as goalsFor2 FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name = "Panenka" OR b.team2_name='Panenka') GROUP BY a.team_name -->
-
-<!-- SELECT a.team_name AS team, SUM(b.team1_score) as goalsForHome FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name =a.team_name) GROUP BY a.team_name -->
-<!-- SELECT a.team_name AS team, SUM(b.team2_score) as goalsForAway FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team2_name =a.team_name) GROUP BY a.team_name -->
-
-<!-- SELECT a.team_name AS team, COUNT(b.game_id) as gamesHome FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team1_name =a.team_name) GROUP BY a.team_name -->
-<!-- SELECT a.team_name AS team, COUNT(b.game_id) as gamesAway FROM `tbl_teams` AS a INNER JOIN `tbl_games` AS b ON (b.team2_name =a.team_name) GROUP BY a.team_name -->

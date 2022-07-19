@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome | FooTurf</title>
+    <title>Top Teams | FooTurf</title>
 
     <link rel="stylesheet" href="<?= base_url('css/common.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/toastr.css') ?>">
@@ -41,73 +41,33 @@
         <section class="hero animate-opacity" id="hero">
             <div class="container">
                 <h2 class="hero__title">Top Teams</h2>
-                <?php foreach ($teams as $team) { ?>
-                    <p class="hero__text"><?= $team['team_name'] ?></p>
-                <?php } ?>
+                <p class="hero__text">Click on the boxes to view statistics on each team</p>
+                <div class="match-container">
+
+                    <?php
+                    $i = 0;
+                    foreach ($topTeams as $name => $rating) {
+                        $i++; ?>
+                        <div class="match-row top" onclick="window.location.href='<?= base_url('/team/' . $name) ?>'">
+                            <p class="match-row__number"><?= $i ?></p>
+                            <p class="match-row__team"><?= $name  ?></p>
+                            <p class="match-row__rating"><?= "Rating: " . $rating  ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </section>
 
         <style>
-            .match-container {
-                margin-top: 1rem;
-            }
-
-            .match-row {
-                /* flex-basis: 100%; */
-                padding: 25px 30px;
-                background-color: var(--nav-light);
-                color: var(--nav-primary);
-                text-align: center;
-
-                /* width: max-content; */
-                margin-bottom: 1.2rem;
-            }
-
-            .match-title a {
-                text-decoration: none;
-                font-weight: 700;
-                font-size: 1.2rem;
-                /* margin-right: 0.25rem; */
-                color: black;
-                color: var(--nav-primary);
-            }
-
-            .match-title a:hover {
-                color: dodgerblue;
-                text-decoration: underline;
-            }
-
-            .match-title span.no-link:hover {
-                text-decoration: none;
-            }
-
-            .match-title span.no-link {
-                font-weight: normal;
-                color: #222;
-                margin-inline: 0.25rem;
-            }
-
-            .match-time {
-                color: var(--nav-dark);
-            }
-
-            @media all and (min-width: 600px) {
-                .match-container {
-                    display: flex;
-                    /* gap: 1.5rem; */
-                    justify-content: space-around;
-                    flex-wrap: wrap;
-                }
-
-                .match-row {
-                    width: calc(100% / 2 - 1.25rem);
-                }
+            .match {
+                background-color: #eee;
             }
         </style>
 
+
         <section class="match animate-opacity" id="match">
             <div class="container">
-                <h2 class="match__title">Today's Matches</h2>
+                <h2 class="match__title">Next Few Matches</h2>
                 <div class="match-container">
                     <?php if (count($games) > 0) {
                         foreach ($games as $game) { ?>
@@ -117,6 +77,7 @@
                                     <span class="no-link">vs</span>
                                     <span><a href="<?= base_url('team/' . $game['team2_name']) ?>"><?= $game['team2_name'] ?></a></span>
                                 </div>
+                                <p class="match-time">Date: <?= $game['game_date'] ?></p>
                                 <p class="match-time">Time: <?= substr($game['game_start'], 0, 5) . " - " . substr($game['game_end'], 0, 5) ?></p>
                             </div>
                         <?php }
@@ -130,6 +91,10 @@
         </section>
         <!-- </div> -->
     </main>
+
+    <div class="footer">
+        <p class="footer__text"> © Copyright - FooTurf Ltd <?= date('Y') ?>.</p>
+    </div>
 
     <script src="<?= base_url('scripts/jquery.min.js') ?>"></script>
     <script src="<?= base_url('scripts/toastr.js') ?>"></script>

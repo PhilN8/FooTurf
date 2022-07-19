@@ -58,13 +58,14 @@ function editScores(game, team1, team2) {
   $("#team1-name").text(`${team1}`);
   $("#team2-name").text(`${team2}`);
   $("#game-id").val(game);
-  console.log(team1, team2);
   $("#score1").val("").trigger("focus");
 }
 
 function addScores() {
   var score1 = parseInt($("#score1").val().trim());
   var score2 = parseInt($("#score2").val().trim());
+  var team1 = $("#team1-name").text();
+  var team2 = $("#team2-name").text();
 
   if (score1 === null || score2 === null) {
     toastr.warning("Enter Scores for the Respective Teams");
@@ -81,6 +82,8 @@ function addScores() {
       score1: score1,
       score2: score2,
       game_id: $("#game-id").val(),
+      team1: team1,
+      team2: team2,
     },
     success: (result) => {
       toastr.success("Scores Updated Successfully");
@@ -107,7 +110,10 @@ function addScores() {
       $("#score1").val("");
       $("#score2").val("");
     },
-    error: () => toastr.error("Something went wrong"),
+    error: (data) => {
+      toastr.error("Something went wrong");
+      console.log(data.responseText, data.responseJSON);
+    },
   });
 }
 

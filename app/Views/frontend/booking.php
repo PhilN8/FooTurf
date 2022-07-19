@@ -40,8 +40,10 @@
     <main class="main">
         <div class="container">
 
+
             <section class="animate-opacity book" id="book">
                 <p class="book__title">Book A Game</p>
+                <p class="book__text">Fill in the required details about teams playing and the time</p>
                 <div class="form__container">
                     <div class="form__box">
                         <input type="text" class="form__input" name="team1" id="team1" placeholder=" ">
@@ -53,10 +55,13 @@
                         <label for="team2" class="form__label">Team 2 Name</label>
                     </div>
 
+                    <!-- <div class="form__box"></div> -->
+
                     <div class="form__box">
                         <input type="date" class="form__input" name="game-date" id="game-date">
                         <label for="game-date" class="form__label">Date</label>
                     </div>
+                    <div class="form__box"></div>
 
                     <div class="form__box">
                         <select name="game-start" id="game-start" class="form__input">
@@ -105,7 +110,7 @@
                         <label for="hours" class="form__label">Number of Hours</label>
                     </div>
 
-                    <div class="form__box">
+                    <div class="form__box" style="display: none;">
                         <input type="number" class="form__input" name="game-cost" id="game-cost" value="2000" readonly>
                         <label for="game-cost" class="form__label">Cost Per Hour</label>
                     </div>
@@ -141,6 +146,19 @@
     <script src="<?= base_url('scripts/toastr.js') ?>"></script>
     <script src="<?= base_url('scripts/nav.js') ?>"></script>
     <script src="<?= base_url('scripts/booking.js') ?>"></script>
+
+    <?php if (isset($_GET['team1'])) { ?>
+        <script>
+            $('#team1').val(`<?= $_GET['team1'] ?>`)
+        </script>
+    <?php } ?>
+
+    <?php if (isset($_GET['team2'])) { ?>
+        <script>
+            $('#team2').val(`<?= $_GET['team2'] ?>`)
+        </script>
+    <?php } ?>
+
 </body>
 
 </html>

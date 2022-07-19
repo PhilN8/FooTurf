@@ -96,6 +96,3 @@ class Game extends Model
         return $stats;
     }
 }
-
-// => $gameDetails['game_date']
-//  => $gameDetails['game_start']

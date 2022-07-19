@@ -49,7 +49,7 @@ bookBtn.addEventListener("click", () => {
       game_date: game_date,
       game_start: game_start,
       game_end: game_end,
-      total_cost: game_cost,
+      total_cost: game_cost * time,
       no_of_hours: time,
     },
     success: (result) => {

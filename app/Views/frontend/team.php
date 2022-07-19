@@ -1,3 +1,9 @@
+<?php
+function ratings($games, $goalsFor, $goalsAgainst)
+{
+    return round((100 * ($goalsFor * 0.5 - $goalsAgainst * 0.3) / $games), 2);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,17 +43,54 @@
     </header>
 
     <main class="main">
-        <div class="container">
-            <section class="hero">
-                <h2 class="team__title">Team Details: <?= $team['team_name'] ?? "Team" ?></h1>
-                    <div class="hero__details">
-                        <p class="hero__text">Captain Name: <span><?= $team['captain_name'] ?? "N/A" ?></span></p>
-                        <p class="hero__text">Contact Info: <span><?= $team['contact_info'] ?? "N/A" ?></span></p>
-                        <p class="hero__text">Date Formed: <span><?= substr($team['created_at'], 0, 10) ?></span></p>
-                    </div>
-            </section>
+        <section class="hero">
+            <div class="hero-container container">
+                <div class="hero-col">
+                    <h2 class="team__title">Team Details</h2>
+                    <p class="hero__text">Team Name: <span><?= $team['team_name'] ?? "N/A" ?></span></p>
+                    <p class="hero__text">Captain Name: <span><?= $team['captain_name'] ?? "N/A" ?></span></p>
+                    <p class="hero__text">Contact Info: <span><?php echo "0" . $team['contact_info'] ?? "N/A" ?></span></p>
+                    <!-- <p class="hero__text">First Game on: <span><?= substr($team['created_at'], 0, 10) ?></span></p> -->
+                    <a href="<?= base_url('/booking?team1=' . $team['team_name']) ?>" class="hero__btn hero__link">Challenge Them</a>
+                </div>
 
-            <section class="stats">
+                <div class="hero-col">
+                    <h2 class="team__title">Team Stats</h2>
+                    <p class="hero__text">Games Played: <span><?php echo $stats[1] . " (" . $team['games_won'] . "W, " . $team['games_drawn'] . "D, " . $team['games_lost'] . "L)"  ?></span></p>
+                    <p class="hero__text">Goals Scored: <span><?= $stats[2] ?></span></p>
+                    <p class="hero__text">Goals Conceded: <span><?= $stats[3] ?></span></p>
+                    <p class="hero__text">Overall Rating: <span><?= ratings($stats[1], $stats[2], $stats[3]) ?></span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="similar">
+            <div class="container">
+                <h2 class="team__title">Similar Teams</h2>
+                <table class="stats__table small">
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($similar as $name => $rating) {
+                            if ($team['team_name'] === $name) continue; ?>
+                            <tr>
+                                <td><?= $name ?></td>
+                                <td><?= $rating ?></td>
+                                <td class="center"><a class="hero__btn hero__link" href="<?= base_url('/booking?team1=' . $name . '&team2=' . $team['team_name']) ?>">Play</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
                 <h2 class="team__title">Last 5 Matches</h2>
                 <?php if (count($matches) > 0) { ?>
                     <table class="stats__table">
@@ -62,7 +105,7 @@
                             <?php foreach ($matches as $match) { ?>
                                 <tr>
                                     <td><?= $match['team1_name'] . " vs " . $match['team2_name'] ?></td>
-                                    <td><?= $match['team1_score'] ? $match['team1_score'] . " - " . $match['team2_score'] : "Not Yet Set" ?></td>
+                                    <td><?= $match['team1_score'] !== null ? $match['team1_score'] . " - " . $match['team2_score'] : "Not Yet Set" ?></td>
                                     <td><?= $match['game_date'] ?></td>
                                 </tr>
                             <?php } ?>
@@ -71,16 +114,17 @@
                 <?php } else { ?>
                     <p class="stats__msg">No Matches Played <?= date("Y-m-d") . "  " .  date("now") ?></p>
                 <?php } ?>
-            </section>
+            </div>
+        </section>
 
-            <section class="future">
+        <section class="future">
+            <div class="container">
                 <h2 class="team__title">Future Matches</h2>
                 <?php if (count($future) > 0) { ?>
                     <table class="stats__table">
                         <thead>
                             <tr>
                                 <th>Match</th>
-                                <!-- <th>Score</th> -->
                                 <th>Game Date</th>
                                 <th>Time</th>
                             </tr>
@@ -99,8 +143,8 @@
                 <?php } else { ?>
                     <p class="stats__msg">No Matches Scheduled Yet</p>
                 <?php } ?>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
 

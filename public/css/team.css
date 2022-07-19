@@ -1,22 +1,42 @@
+.center {
+  display: grid;
+  place-content: center;
+}
+
 .hero,
-.stats {
-  padding-block: 3rem;
+.stats,
+.future {
+  padding-block: 2.4rem;
+}
+
+.hero-col:nth-of-type(2) {
+  margin-top: 2rem;
 }
 
 .team__title {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero__details {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
-.hero__details > p + p {
+.hero__text + .hero__text {
   margin-top: 0.75rem;
 }
 
-.hero__details p span {
+.hero__text {
+  /* text-align: center; */
+  margin-left: 1.5rem;
+}
+
+.hero__text span {
   font-weight: 700;
+}
+
+.stats {
+  background-color: #efefef;
 }
 
 .stats__table {
@@ -54,7 +74,7 @@
 
 .stats__table tbody {
   display: block;
-  max-height: 200px;
+  /* max-height: 200px; */
   scrollbar-width: none;
   overflow-y: scroll;
 }
@@ -64,4 +84,74 @@
   display: table;
   width: 100%;
   table-layout: fixed;
+}
+
+@media all and (min-width: 600px) {
+  .hero-container {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 3rem;
+  }
+
+  .hero-col {
+    flex-basis: 100%;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+
+  .hero-col:nth-of-type(2) {
+    margin-top: 0;
+  }
+}
+
+.hero__btn {
+  border: 1px solid var(--nav-primary);
+  outline: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background-color: var(--nav-primary);
+  transition: all 0.3s;
+  color: var(--nav-light);
+  margin: 1rem 0 0 1rem;
+  display: block;
+  width: max-content;
+}
+
+.hero__link {
+  text-decoration: none;
+  /* color: inherit; */
+}
+
+.hero__btn:hover {
+  background-color: var(--nav-light);
+  color: var(--nav-primary);
+}
+
+.center .hero__btn {
+  margin: 0;
+}
+
+.stats__table.small {
+  width: min(100%, 500px);
+  margin-inline: auto;
+}
+
+.stats__table.small tbody {
+  scrollbar-width: none;
+}
+
+.stats__table.small tbody::-webkit-scrollbar {
+  width: 0;
+}
+
+.main section:nth-of-type(even) {
+  background-color: #eee;
+}
+
+.main section:nth-of-type(odd) {
+  background-color: #fff;
+}
+
+.similar {
+  padding-block: 2rem;
 }
