@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Team;
 use App\Models\Game;
 use App\Models\Payment;
+use App\Models\Comment;
 use CodeIgniter\Database\BaseConnection;
 
 class Admin extends BaseController
@@ -29,6 +30,7 @@ class Admin extends BaseController
             "SELECT COUNT(`game_id`) AS Games, WEEKDAY(game_date) as Day FROM tbl_games GROUP BY Day"
         )->getResultArray() ?? [];
         $data['allStats'] = (new Game)->getStatsAll();
+        arsort($data['allStats']);
 
         if (count($data['cash']) < 7) {
             $diff = 7 - count($data['cash']);
@@ -47,6 +49,8 @@ class Admin extends BaseController
                     'Games' => 0
                 ];
         }
+
+        $data['comments'] = (new Comment)->where('comment_status', 'posted')->findAll();
 
         return view('frontend/admin', $data);
     }

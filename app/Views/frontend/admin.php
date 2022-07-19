@@ -1,7 +1,7 @@
 <?php
 function ratings($games, $goalsFor, $goalsAgainst)
 {
-    return round((($goalsFor * 0.5 - $goalsAgainst * 0.3) / $games), 2);
+    return round((100 * ($goalsFor * 0.5 - $goalsAgainst * 0.3) / $games), 2);
 }
 ?>
 <!DOCTYPE html>
@@ -65,11 +65,11 @@ function ratings($games, $goalsFor, $goalsAgainst)
                         <i class="fas fa-tasks"></i><span class="nav__span">Stats</span>
                     </a>
                 </li>
-                <!-- <li class="nav__item">
-                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
-                        <i class="fas fa-cog"></i><span class="nav__span">Settings</span>
+                <li class="nav__item">
+                    <a href="javascript:void(0)" class="nav__link" onclick="openSection('comment')">
+                        <i class="fas fa-cog"></i><span class="nav__span">Comments</span>
                     </a>
-                </li> -->
+                </li>
                 <!-- <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('intro')">
                         <i class="fas fa-question-circle"></i><span class="nav__span">Help</span>
@@ -280,11 +280,11 @@ function ratings($games, $goalsFor, $goalsAgainst)
 
         <section class="stats admin-section animate-opacity" id="stats">
             <h2 class="admin__title">Stats</h2>
-            <div class="form__box">
+            <!-- <div class="form__box">
                 <input type="text" placeholder=" " class="form__input" id="search-name">
                 <label for="search-name" class="form__label">Team Name</label>
             </div>
-            <button class="form__btn form__btn--submit" onclick="searchStats()">Update</button>
+            <button class="form__btn form__btn--submit" onclick="searchStats()">Update</button> -->
             <table class="admin__table">
                 <thead>
                     <tr>
@@ -295,7 +295,7 @@ function ratings($games, $goalsFor, $goalsAgainst)
                         <th>Rating</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="admin__table--long" id="statsTable">
                     <?php foreach ($allStats as $key => $stats) { #print_r($stats); 
                         $GF = $stats[2];
                         $GA = $stats[3];
@@ -314,8 +314,34 @@ function ratings($games, $goalsFor, $goalsAgainst)
                     <?php } ?>
                 </tbody>
             </table>
+        </section>
 
+        <section class="admin-section animate-opacity comment" id="comment">
+            <h2 class="admin__title">Comments</h2>
+            <table class="admin__table">
+                <thead>
+                    <tr>
+                        <th>Comment</th>
+                        <!-- <th>Games Booked</th> -->
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody class="admin__table--long" id="commentsTable">
+                    <?php foreach ($comments as $comment) { #print_r($stats); 
 
+                    ?>
+                        <tr>
+                            <td><?= $comment['comment_id'] ?></td>
+                            <!-- <td><?= $stats[0] ?></td> -->
+                            <td><?= $comment['name'] ?></td>
+                            <td><?= $comment['phone_number'] ?></td>
+                            <td><?= $comment['comment'] ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </section>
 
         <script>

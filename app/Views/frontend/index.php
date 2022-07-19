@@ -47,6 +47,82 @@
             </section>
         </div>
 
+        <section class="services">
+            <div class="container">
+                <p class="services__title">What We Offer</p>
+                <div class="services-container">
+                    <div class="services__col">
+                        <p class="services__col--number">1</p>
+                        <p class="services__col--title">Online Booking</p>
+                        <p class="services__col--text">Get instant information when scheduling a match, and allows for payment of matches via online payments</p>
+                    </div>
+                    <div class="services__col">
+                        <p class="services__col--number">2</p>
+                        <p class="services__col--title">Connect With Other Teams</p>
+                        <p class="services__col--text">Contact Info for each Team Captain© is available to easily reach out and connect with new teams</p>
+                    </div>
+                    <div class="services__col">
+                        <p class="services__col--number">3</p>
+                        <p class="services__col--title">Tracking of Stats</p>
+                        <p class="services__col--text">
+                            We keep detailed statistics on all teams which help connect similarly-skilled teams
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .services {
+                background-color: var(--nav-primary);
+                color: var(--nav-light);
+                padding-block: 2rem;
+            }
+
+            .services__title {
+                font-size: 2rem;
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 1.2rem;
+            }
+
+            .services__col {
+                background-color: var(--nav-light);
+                color: var(--nav-primary);
+                padding: 2.5rem 20px 1rem;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .services__col--title {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+                font-weight: 700;
+            }
+
+            .services__col--number {
+                margin-bottom: 1rem;
+                height: 60px;
+                width: 60px;
+                display: grid;
+                place-content: center;
+                border-radius: 50%;
+                text-align: center;
+                background-color: var(--nav-primary);
+                color: var(--nav-light);
+                font-size: 1.5rem;
+                margin-inline: auto;
+            }
+
+            @media all and (min-width: 768px) {
+                .services-container {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 2rem;
+                }
+            }
+        </style>
+
 
         <section class="location">
             <div class="container location-container">
@@ -150,8 +226,8 @@
                     </div>
 
                     <div class="book__form--box">
-                        <input type="text" name="email" id="email" class="book__form--input" placeholder=" ">
-                        <label for="email" class="book__form--label">Email</label>
+                        <input type="number" name="phone" id="phone" class="book__form--input" placeholder=" ">
+                        <label for="phone" class="book__form--label">Phone Number</label>
                     </div>
                     <div class="book__form--box">
                         <textarea name="comment" id="comment" cols="30" rows="7" class="book__form--input" placeholder=" "></textarea>
