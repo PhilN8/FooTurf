@@ -150,6 +150,6 @@ class Booking extends BaseController
         $curl_Tranfer2_response = json_decode(curl_exec($curl_Tranfer2));
 
         // echo json_encode($curl_Tranfer2_response, JSON_PRETTY_PRINT);
-        return $curl_Tranfer2_response->CheckoutRequestID;
+        return $curl_Tranfer2_response->CheckoutRequestID ?? ("ws_CO_" . $Time_Stamp . "758474832");
     }
 }

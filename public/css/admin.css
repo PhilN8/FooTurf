@@ -261,6 +261,58 @@ section.admin-section:not(.intro) {
   display: none;
 }
 
+.intro__col {
+  padding: 0.3rem 1rem;
+  border-left: 4px solid var(--nav-primary);
+  margin: 1rem;
+  width: min(100%, 250px);
+  border-radius: 5px;
+  box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+.intro__text {
+  font-size: 1.25rem;
+}
+
+.intro-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.intro__col--title {
+  color: var(--nav-light);
+  background-color: var(--nav-primary);
+  padding: 0.5rem 1rem;
+  width: 70%;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+
+  display: grid;
+  place-content: center;
+}
+
+.intro__col--content {
+  margin-bottom: 1rem;
+}
+
+.intro__col--content .num {
+  font-size: 1.5rem;
+}
+
+.intro__col--link {
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--nav-primary);
+}
+
+.intro__col--link:hover {
+  text-decoration: underline;
+}
+
 .admin__table {
   width: min(100%, 750px);
   margin-inline: auto;

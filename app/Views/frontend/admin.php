@@ -86,39 +86,43 @@ function ratings($games, $goalsFor, $goalsAgainst)
 
     <main class="main">
         <section class="animate-opacity intro admin-section" id="intro">
+            <h2 class="admin__title">Admin Dashboard</h2>
+            <p class="intro__text">Here is a summary of the data captured in FooTurf</p>
             <div class="intro-container">
                 <div class="intro__col">
                     <p class="intro__col--title">Teams</p>
+                    <div class="intro__col--content">
+                        <p>Number of Teams</p>
+                        <p class="num"><?= count($teams) ?></p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="openSection('teams')" class="intro__col--link">View More</a>
                 </div>
                 <div class="intro__col">
                     <p class="intro__col--title">Games</p>
+                    <div class="intro__col--content">
+                        <p>Number of Games</p>
+                        <p class="num"><?= count($games) + count($scores) ?></p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="openSection('games')" class="intro__col--link">View More</a>
                 </div>
                 <div class="intro__col">
                     <p class="intro__col--title">Statistics</p>
+                    <div class="intro__col--content">
+                        <p>Total Earnings</p>
+                        <p class="num"><?= $earnings ?></p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="openSection('payments')" class="intro__col--link">View More</a>
                 </div>
                 <div class="intro__col">
                     <p class="intro__col--title">Comments</p>
+                    <div class="intro__col--content">
+                        <p>Total Comments</p>
+                        <p class="num"><?= count($comments) ?></p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="openSection('comments')" class="intro__col--link">View More</a>
                 </div>
             </div>
         </section>
-
-        <style>
-            .intro__col {
-                border: 1px solid black;
-                border-left: 5px solid blue;
-                padding: 2rem 1rem;
-            }
-
-            @media all and (min-width: 720px) {
-                .intro-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 2rem;
-                }
-            }
-        </style>
-
-
 
         <section class="animate-opacity admin-section teams" id="teams">
             <h2 class="admin__title">Teams</h2>

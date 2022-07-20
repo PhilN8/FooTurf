@@ -14,6 +14,7 @@ class Admin extends BaseController
 
     public function index()
     {
+        $data['session'] = session();
         $this->db = db_connect();
 
         $data['teams'] = (new Team)->findAll();
@@ -31,6 +32,10 @@ class Admin extends BaseController
         )->getResultArray() ?? [];
         $data['allStats'] = (new Game)->getStatsAll();
         arsort($data['allStats']);
+
+        $data['earnings'] = $this->db->query(
+            "SELECT SUM(total_cost) AS Earnings FROM `tbl_payments`"
+        )->getRow()->Earnings;
 
         if (count($data['cash']) < 7) {
             $diff = 7 - count($data['cash']);
