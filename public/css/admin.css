@@ -65,17 +65,18 @@ aside a {
   align-items: center;
 
   text-decoration: none;
-  background-color: var(--nav-primary);
+  background-color: var(--nav-light);
   /* background-color: white; */
-  color: var(--nav-light);
+  color: var(--nav-primary);
   padding: 10px;
+  border-bottom: 4px solid #555;
 }
 
 .logo img {
   height: 45px;
   width: 45px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .logo span {
@@ -97,7 +98,8 @@ aside a {
   text-decoration: none;
 }
 
-.fas {
+.fas,
+.far {
   position: relative;
   width: 70px;
   height: 40px;
@@ -255,7 +257,7 @@ section.admin-section {
   min-height: 100vh;
 }
 
-section.admin-section:not(.stats) {
+section.admin-section:not(.intro) {
   display: none;
 }
 

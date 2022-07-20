@@ -154,3 +154,138 @@ input[type="number"] {
 .footer {
   padding-top: 0;
 }
+
+.services {
+  background-color: var(--nav-primary);
+  color: var(--nav-light);
+  padding-block: 2rem;
+}
+
+.services__title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.services__col {
+  background-color: var(--nav-light);
+  color: var(--nav-primary);
+  padding: 2.5rem 20px 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.services__col--title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.services__col--number {
+  margin-bottom: 1rem;
+  height: 60px;
+  width: 60px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--nav-primary);
+  color: var(--nav-light);
+  font-size: 1.5rem;
+  margin-inline: auto;
+}
+
+@media all and (min-width: 768px) {
+  .services-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+/* GMaps Image */
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: min(50vh, 400px);
+  width: min(100%, 600px);
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  margin-inline: auto;
+  background: none !important;
+  height: 100%;
+  width: min(100%, 600px);
+}
+
+iframe {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.location__info--title {
+  font-size: 2rem;
+}
+
+.location__info--text {
+  font-size: 1.1rem;
+}
+
+.location__info {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+@media screen and (min-width: 850px) {
+  .location-container {
+    display: flex;
+    gap: 1.8rem;
+    justify-content: space-between;
+  }
+
+  .mapouter {
+    flex-grow: 1;
+    align-self: center;
+  }
+
+  .location__info {
+    flex-basis: 30%;
+    margin-bottom: 0;
+    align-self: center;
+  }
+}
+
+.location {
+  padding-block: 2.5rem;
+  background-color: var(--nav-primary);
+  background-color: #eee;
+  color: black;
+}
+
+.hero__col img {
+  max-width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.hero__col {
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media all and (min-width: 768px) {
+  .hero-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .hero__col {
+    flex-basis: 100%;
+    text-align: left;
+  }
+}

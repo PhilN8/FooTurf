@@ -31,7 +31,7 @@ function ratings($games, $goalsFor, $goalsAgainst)
             <ul class="nav__list">
                 <li class="nav__item">
                     <a href="#" class="logo">
-                        <img src="<?= base_url('img/codeInfo.jpg') ?>" alt="Logo">
+                        <img src="<?= base_url('img/image3.jpg') ?>" alt="Logo">
                         <span>FooTurf</span>
                     </a>
                 </li>
@@ -62,12 +62,12 @@ function ratings($games, $goalsFor, $goalsAgainst)
                 </li>
                 <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('stats')">
-                        <i class="fas fa-tasks"></i><span class="nav__span">Stats</span>
+                        <i class="fas fa-tasks"></i><span class="nav__span">Team Stats</span>
                     </a>
                 </li>
                 <li class="nav__item">
                     <a href="javascript:void(0)" class="nav__link" onclick="openSection('comment')">
-                        <i class="fas fa-cog"></i><span class="nav__span">Comments</span>
+                        <i class="far fa-comment-alt"></i><span class="nav__span">Comments</span>
                     </a>
                 </li>
                 <!-- <li class="nav__item">
@@ -86,12 +86,37 @@ function ratings($games, $goalsFor, $goalsAgainst)
 
     <main class="main">
         <section class="animate-opacity intro admin-section" id="intro">
-            <?php
-
-            echo "BULLSHIVIK " . session()->name . "<br>";
-            echo "<a href=" . base_url('/logout') . ">Logout</a>";
-            ?>
+            <div class="intro-container">
+                <div class="intro__col">
+                    <p class="intro__col--title">Teams</p>
+                </div>
+                <div class="intro__col">
+                    <p class="intro__col--title">Games</p>
+                </div>
+                <div class="intro__col">
+                    <p class="intro__col--title">Statistics</p>
+                </div>
+                <div class="intro__col">
+                    <p class="intro__col--title">Comments</p>
+                </div>
+            </div>
         </section>
+
+        <style>
+            .intro__col {
+                border: 1px solid black;
+                border-left: 5px solid blue;
+                padding: 2rem 1rem;
+            }
+
+            @media all and (min-width: 720px) {
+                .intro-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+                }
+            }
+        </style>
 
 
 
